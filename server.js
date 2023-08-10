@@ -5,6 +5,19 @@ const PORT = process.env.PORT || 8000;
 const mongoose = require('mongoose');
 const path = require('path');
 
+
+
+// check for token and req.user
+app.use(require('./config/checkToken'))
+
+app.use('api/uisers', require('./routes/api/users'))
+// protect below routes from anonymous users
+const ensureLoggedIn = require('./config/ensureLoggedIn')
+app.use('./api/items', ensureLoggedIn, require('./routes/api/items'))
+app.use('./api/orders', ensureLoggedIn, require('./routes/api/orders'))
+
+
+
 /* Add MongoDB here after connecting database in .env
 const MONGODB_URI = process.env.MONGODB_URI
 const db = mongoose.connection;
