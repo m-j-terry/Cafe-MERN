@@ -33,11 +33,8 @@ useEffect(function() {
     }
     getCart() 
 }, []) 
-// Providing an empty 'dependency array'
-// results in the effect running after
-// the FIRST render only
 
-/*-- Event Handlers --*/
+/*--- event handlers ---*/
 async function handleAddToOrder(itemId) {
     const updatedCart = await ordersAPI.addItemToCart(itemId) 
     setCart(updatedCart) 
