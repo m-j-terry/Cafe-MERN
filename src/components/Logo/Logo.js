@@ -1,4 +1,4 @@
-import styles from './Logo.css';
+import styles from './Logo.css' 
 
 export default function Logo() {
 return (
@@ -6,5 +6,5 @@ return (
         <div>SEI</div>
         <div>CAFE</div>
     </div>
-);
+) 
 }
