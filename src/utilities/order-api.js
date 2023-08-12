@@ -15,6 +15,7 @@ export function setItemQtyInCart(itemId, newQty) {
 }
 
 export function checkout() {
+    if (!user) return (<AuthPage />)
     return sendRequest(`${BASE_URL}/cart/checkout`, 'POST')
 }
 
