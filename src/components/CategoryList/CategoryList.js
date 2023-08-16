@@ -1,4 +1,4 @@
-import styles from './CategoryList.css' //scss?
+// import styles from './CategoryList.module.scss'
 
 export default function CategoryList({ categories, activeCat, setActiveCat }) {
     const cats = categories.map(cat => 
@@ -10,7 +10,7 @@ export default function CategoryList({ categories, activeCat, setActiveCat }) {
         </li>
     )
     return (
-        <ul> className={styles.CategoryList}
+        <ul className=/*{styles.CategoryList}*/'CategoryList'>
             {cats}
         </ul>
     )

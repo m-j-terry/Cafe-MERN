@@ -1,5 +1,5 @@
-import styles from './MenuList.module.scss';
-import MenuListItem from '../MenuListItem/MenuListItem';
+// import styles from './MenuList.module.scss' 
+import MenuListItem from '../MenuListItem/MenuListItem' 
 
 export default function MenuList({ menuItems, handleAddToOrder }) {
     const items = menuItems.map(item =>
@@ -8,10 +8,10 @@ export default function MenuList({ menuItems, handleAddToOrder }) {
         handleAddToOrder={handleAddToOrder}
         menuItem={item}
     />
-    );
+    ) 
     return (
-        <main className={styles.MenuList}>
-        {items}
+        <main className=/*{styles.MenuList}*/'MenuList'>
+            {items}
         </main>
-    );
+    ) 
 }

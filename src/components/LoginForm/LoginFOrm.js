@@ -38,7 +38,7 @@ async function handleSubmit(evt) {
             <button type="submit">LOG IN</button>
             </form>
         </div>
-        <p className="error-message">&nbsp {error}</p>
+        {/* <p className="error-message">&nbsp {error}</p> */}
     </div>
     ) 
 }

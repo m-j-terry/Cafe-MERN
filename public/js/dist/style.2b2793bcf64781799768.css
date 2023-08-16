@@ -1,24 +1,170 @@
-/*!******************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/pages/App/App.module.scss ***!
-  \******************************************************************************************************************************************************************/
-
-/*!****************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/pages/AuthPage/AuthPage.module.scss ***!
-  \****************************************************************************************************************************************************************************/
-.RygkJgZmBHTETlLP3C3i {
-  height: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: var(--white);
-  border-radius: 2vmin;
+/*!***************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/style.scss ***!
+  \***************************************************************************************************************************************************/
+:root {
+  --white: #FFFFFF;
+  --tan-1: #FBF9F6;
+  --tan-2: #E7E2DD;
+  --tan-3: #E2D9D1;
+  --tan-4: #D3C1AE;
+  --orange: #F67F00;
+  --text-light: #968c84;
+  --text-dark: #615954;
 }
 
-.RygkJgZmBHTETlLP3C3i h3 {
-  margin-top: 4vmin;
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--tan-4);
+  padding: 2vmin;
+  height: 100vh;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+#root {
+  height: 100%;
+}
+
+.align-ctr {
   text-align: center;
+}
+
+.align-rt {
+  text-align: right;
+}
+
+.smaller {
+  font-size: smaller;
+}
+
+.flex-ctr-ctr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-j-end {
+  justify-content: flex-end;
+}
+
+.scroll-y {
+  overflow-y: scroll;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--tan-1);
+  color: var(--text-dark);
+  border: 0.1vmin solid var(--tan-3);
+  border-radius: 1vmin;
+  padding: 0.6vmin;
+  text-align: center;
+  font-size: 2vmin;
+}
+
+.form-container {
+  padding: 3vmin;
+  background-color: var(--tan-1);
+  border: 0.1vmin solid var(--tan-3);
+  border-radius: 1vmin;
+}
+
+p.error-message {
+  color: var(--orange);
+  text-align: center;
+}
+
+form {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1.25vmin;
   color: var(--text-light);
+}
+
+label {
+  font-size: 2vmin;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  padding: 1vmin;
+  font-size: 2vmin;
+  border: 0.1vmin solid var(--tan-3);
+  border-radius: 0.5vmin;
+  color: var(--text-dark);
+  background-image: none !important; /* prevent lastpass */
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--orange);
+}
+
+button, a.button {
+  margin: 1vmin;
+  padding: 1vmin;
+  color: var(--white);
+  background-color: var(--orange);
+  font-size: 2vmin;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  border: 0.1vmin solid var(--tan-2);
+  border-radius: 0.5vmin;
+  outline: none;
   cursor: pointer;
+}
+
+button.btn-sm {
+  font-size: 1.5vmin;
+  padding: 0.6vmin 0.8vmin;
+}
+
+button.btn-xs {
+  font-size: 1vmin;
+  padding: 0.4vmin 0.5vmin;
+}
+
+button:disabled, form:invalid button[type=submit] {
+  cursor: not-allowed;
+  background-color: var(--tan-4);
+}
+
+button[type=submit] {
+  grid-column: span 2;
+  margin: 1vmin 0 0;
+}
+/*!*************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/components/Logo/Logo.module.scss ***!
+  \*************************************************************************************************************************************************************************/
+.EDeinQzfS2N2rVW_Z1GP {
+  height: 12vmin;
+  width: 12vmin;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: var(--orange);
+  color: var(--tan-1);
+  font-size: 2.7vmin;
+  border: 0.6vmin solid var(--tan-2);
 }
 /*!************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/pages/NewOrderPage/NewOrderPage.module.scss ***!
@@ -39,17 +185,6 @@
   align-items: center;
   margin: 3vmin 2vmin;
 }
-/*!*********************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/components/MenuList/MenuList.module.scss ***!
-  \*********************************************************************************************************************************************************************************/
-.eBz5FvD9TgyIgfFi1MdG {
-  background-color: var(--tan-1);
-  border: 0.1vmin solid var(--tan-3);
-  border-radius: 2vmin;
-  margin: 3vmin 0;
-  padding: 3vmin;
-  overflow-y: scroll;
-}
 /*!*****************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/components/MenuListItem/MenuListItem.module.scss ***!
   \*****************************************************************************************************************************************************************************************/
@@ -67,7 +202,7 @@
   font-size: 4vmin;
 }
 
-.X4tFBfG4MKknHvd01CKE .GqkE12RHPdZZg1360W4p {
+.X4tFBfG4MKknHvd01CKE .dTwdG1Vxh_kNAcuyMLbz {
   height: 8vw;
   width: 8vw;
   font-size: 4vw;
@@ -181,6 +316,57 @@
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/components/UserLogOut/UserLogOut.module.scss ***!
   \*************************************************************************************************************************************************************************************/
 
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/pages/OrderHistoryPage/OrderHistoryPage.module.scss ***!
+  \********************************************************************************************************************************************************************************************/
+.U7F51i6q23MB43wS4GeC {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1.6fr 3.5fr 3fr;
+  grid-template-rows: 1fr;
+  background-color: var(--white);
+  border-radius: 2vmin;
+}
+
+.U7F51i6q23MB43wS4GeC .Gl976TgPIRmY9_yeWoZA {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3vmin 2vmin;
+}
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/components/OrderListItem/OrderListItem.module.scss ***!
+  \*******************************************************************************************************************************************************************************************/
+.SbDKL2bctOyC5ZgA0KfW {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3vmin;
+  padding: 2vmin;
+  color: var(--text-light);
+  background-color: var(--white);
+  border: 0.2vmin solid var(--tan-3);
+  border-radius: 1vmin;
+  font-size: 2vmin;
+  cursor: pointer;
+}
+
+.SbDKL2bctOyC5ZgA0KfW > div > div:first-child {
+  margin-bottom: 0.5vmin;
+}
+
+.SbDKL2bctOyC5ZgA0KfW.mOA_Z5p05rn7VW_2oU68 {
+  border-color: var(--orange);
+  border-width: 0.2vmin;
+  cursor: default;
+}
+
+.SbDKL2bctOyC5ZgA0KfW:not(.mOA_Z5p05rn7VW_2oU68):hover {
+  border-color: var(--orange);
+  border-width: 0.2vmin;
+}
 /*!***********************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/components/OrderList/OrderList.module.scss ***!
   \***********************************************************************************************************************************************************************************/
@@ -203,4 +389,4 @@
   top: 50vh;
 }
 
-/*# sourceMappingURL=App.7a8cd30893c8cdfc1dff8da2fa839561.js.map*/
+/*# sourceMappingURL=App.cc97f54d665acd6c4448e94e3b831bed.js.map*/

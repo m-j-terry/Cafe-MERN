@@ -1,7 +1,7 @@
 // import {StrictMode} from "react";
 // import { createRoot } from "react-dom/client";
 
-import './style.css'
+import './style.scss'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './pages/App/App'

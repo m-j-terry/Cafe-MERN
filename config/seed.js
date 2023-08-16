@@ -1,8 +1,8 @@
-require('dotenv').config();
-require('./database');
+require('dotenv').config()
+require('./database')
 
-const Category = require('../models/category');
-const Item = require('../models/item');
+const Category = require('../models/category')
+const Item = require('../models/item')
 
 (async function() {
 
@@ -13,11 +13,10 @@ const Item = require('../models/item');
         {name: 'Drip', sortOrder: 30},
         {name: 'Tea', sortOrder: 40},
         {name: 'Pastries', sortOrder: 50},
-        // {name: 'Desserts', sortOrder: 60},
-        // {name: 'Drinks', sortOrder: 70},
+        {name: 'Coffee', sortOrder: 60}
     ]);
 
-    await Item.deleteMany({});
+    await Item.deleteMany({})
     const items = await Item.create([
         {name: 'Espresso', image: 'https://media.istockphoto.com/id/545335342/photo/coffee-espresso-in-white-background.jpg?s=170667a&w=0&k=20&c=HwMb50CqrDXuXnARCw4rJPt0YddeepHHZx1QkvVrSLg=', category: categories[0], price: 3.50},
         {name: 'Macchiato', image: 'https://img.freepik.com/premium-photo/glass-with-latte-macchiato-white-background_392895-105815.jpg?w=740', category: categories[1], price: 3.75},
@@ -40,15 +39,6 @@ const Item = require('../models/item');
         {name: 'Pistachio Bread',  image: 'https://www.savvysavingcouple.net/wp-content/uploads/2023/02/Pistachio-bread-on-white-plate-1.jpg', category: categories[4], price: 8.75},
         {name: 'Little Wolf, Laayyoo', image: 'https://sprudge.com/wp-content/uploads/2017/03/Bag-Front-740x493.jpg', category: categories[5], price: 19.95},
         {name: 'Coptic Light, Las Palmas', image: 'https://copticlight.org/cdn/shop/articles/B_W_bag_Oct2020_small_22e153ca-8726-4c71-ac64-98040c120f32_1024x1024.jpg?v=1603813947', category: categories[5], price: 18.75}
-        // {name: 'Ice Cream', emoji: '🍨', category: categories[5], price: 1.95},
-        // {name: 'Cup Cake', emoji: '🧁', category: categories[5], price: 0.95},
-        // {name: 'Custard', emoji: '🍮', category: categories[5], price: 2.95},
-        // {name: 'Strawberry Shortcake', emoji: '🍰', category: categories[5], price: 3.95},
-        // {name: 'Milk', emoji: '🥛', category: categories[6], price: 0.95},
-        // {name: 'Coffee', emoji: '', category: categories[6], price: 0.95},
-        // {name: 'Mai Tai', emoji: '🍹', category: categories[6], price: 8.95},
-        // {name: 'Beer', emoji: '🍺', category: categories[6], price: 3.95},
-        // {name: 'Wine', emoji: '🍷', category: categories[6], price: 7.95},
     ]);
 
     console.log(items)

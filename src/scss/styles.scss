@@ -3,24 +3,130 @@
 @import "reset";
 @import "grid";
 
+html{
+  height: 100%;
+  background-color: white;
+}
 body {
-  font-size: 16px;
+  color: #000;
+  background-color: white;
+  transition: background-color 1s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  #main{
+    background-color: gray;
+  }
+  #root{
+    background-color: white;
+  }
+  .title{
+    font-family:"Lisu Bosa"; 
+    text-align: center;
+  }
+  h1{
+    font-size: 10vmin;
+    margin-bottom: 5vmin;
+  }
+  h2{
+    margin-top: 5vmin;
+    font-size: 7vmin;
+  }
+  .about-paragraph{
+    font-family: 'Roboto Mono';
+    text-align: left;
+  }
+  .Hamlet{
+
+  }
+  .About{
+    margin-top: 25vmin;
+  }
+  .About-Flex{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .FindUs{
+    margin-top: 25vmin;
+    .flexbox{
+      display: grid;
+      grid-template-columns: 60% 1% 20%;
+      align-items: center;
+    }
+  }
+  p{
+    text-align: center;
+  }
+  .ContactUs{
+    margin-top: 25vmin;
+    margin-bottom: 10vmin;
+    .icon {
+      max-height:35px;
+    }
+    .icons {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      flex-direction: row;
+      margin-bottom: 10vmin;
+    }
+  }
+  .Menu{
+    text-align: center;
+    .menu {
+      display: grid;
+      grid-template-rows: 75px 75px 75px 75px 75px;
+      grid-template-columns: 150px 150px; 
+    }
+    .menu2 {
+      display: grid;
+      grid-template-rows: 75px 75px 75px 75px 75px;
+      grid-template-columns: 100px 100px 100px 100px; 
+    }
+    .menu-full {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }  
+    .item {
+      font-family: 'Roboto Mono'
+    }
+    .origin {
+      font-family: 'Roboto Mono';
+      font-size: 12px;
+    } 
+    button:hover {
+      cursor: pointer;
+    }
+    button .order {
+      border: black;
+      background-color: white;
+      color: black;
+      font-size: 2vmin;
+      height: 25px;
+      width: 135px;
+      column-gap: 10px;
+      border-radius: 3%;
+      margin-top: 10px;
+      font-family: 'Roboto Mono';
+    }  
+  }
 }
 
 .NavBar {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  background-color: #f0f0f0;
-  height: 2rem;
-  align-items: center;
-  font-size: 1.5rem;
-  color: orangered;
-  a {
-    color: orangered;
-    text-decoration: none;
+  background-color: white;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  overflow: hidden;
+  position: fixed;
+  button {
+    border: none;
+    background-color: transparent;
+    font-size: 3vmin;
+    color: black;
+    font-family: 'Roboto Mono';
     &:link, &:visited {
-      color: orangered;
+      color: rgb(25, 97, 252);
       text-decoration: none;
     }
   }
