@@ -20,7 +20,7 @@ body {
     sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: var(--tan-4);
+    background-color: var(--white);
     padding: 2vmin;
     height: 100vh;
 }
@@ -119,14 +119,15 @@ input:focus {
 button, a.button {
     margin: 1vmin;
     padding: 1vmin;
-    color: var(--white);
-    background-color: var(--orange);
+    color: black;
+    background-color: rgb(205, 211, 220);
     font-size: 2vmin;
+    font-family: 'Roboto Mono';
     font-weight: bold;
     text-decoration: none;
     text-align: center;
     border: .1vmin solid var(--tan-2);
-    border-radius: .5vmin;
+    border-radius: .75vmin;
     outline: none;
     cursor: pointer;
 }

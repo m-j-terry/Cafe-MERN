@@ -37,11 +37,27 @@ body {
     font-family: 'Roboto Mono';
     text-align: left;
   }
-  .Hamlet{
-
+  .hamletImg{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
   .About{
     margin-top: 25vmin;
+    margin-bottom: 25vmin;
+    .matcha{
+      position: relative;
+      left: 20%;
+    }
+    p{
+      margin-bottom: 5vmin;
+      margin-right: 20%;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+    #p1{
+      margin-top: 15vmin;
+    }
   }
   .About-Flex{
     display: grid;
@@ -74,6 +90,10 @@ body {
   }
   .Menu{
     text-align: center;
+    p{ 
+      margin: auto;
+      padding:10px;
+    }
     .menu {
       display: grid;
       grid-template-rows: 75px 75px 75px 75px 75px;

@@ -4,10 +4,10 @@ export default function About() {
             <h1 className='title'>about</h1>
             <div className='About-Flex'>
                 <div>
-                    <img src='https://imgur.com/a/BbfqRSN' height='250px' width='100px'/>
+                <a href="https://imgur.com/hCA2Jun"><img className='matcha' src="https://i.imgur.com/hCA2Jun.jpg" title="source: imgur.com"  height='600px' width='450px'/></a>
                 </div>
                 <div>
-                    <p className='about-paragraph'>hello.</p>
+                    <p className='about-paragraph' id='p1'>hello.</p>
                     <p></p>
                     <p className='about-paragraph'>welcome to halmet coffee company, founded February 2nd, 2020.</p>
                     <p></p>

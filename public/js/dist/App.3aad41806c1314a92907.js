@@ -19,12 +19,17 @@ function About() {
     className: "title"
   }, "about"), /*#__PURE__*/React.createElement("div", {
     className: "About-Flex"
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
-    src: "https://imgur.com/a/BbfqRSN",
-    height: "250px",
-    width: "100px"
-  })), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", {
-    className: "about-paragraph"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("a", {
+    href: "https://imgur.com/hCA2Jun"
+  }, /*#__PURE__*/React.createElement("img", {
+    className: "matcha",
+    src: "https://i.imgur.com/hCA2Jun.jpg",
+    title: "source: imgur.com",
+    height: "600px",
+    width: "450px"
+  }))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", {
+    className: "about-paragraph",
+    id: "p1"
   }, "hello."), /*#__PURE__*/React.createElement("p", null), /*#__PURE__*/React.createElement("p", {
     className: "about-paragraph"
   }, "welcome to halmet coffee company, founded February 2nd, 2020."), /*#__PURE__*/React.createElement("p", null), /*#__PURE__*/React.createElement("p", {
@@ -195,6 +200,7 @@ function Hamlet() {
   }, /*#__PURE__*/React.createElement("h1", {
     className: "title"
   }, "hamlet"), /*#__PURE__*/React.createElement("img", {
+    className: "hamletImg",
     src: "https://i.imgur.com/n94ZpmJ.jpg"
   }), /*#__PURE__*/React.createElement("h2", {
     className: "title"
@@ -2225,4 +2231,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.80d71587c785f010881b4e7cb3691628.js.map
+//# sourceMappingURL=App.7522916e6523b2f49a5044313895a9d3.js.map
