@@ -1,0 +1,23 @@
+.About{
+    margin-top: 25vmin;
+    margin-bottom: 25vmin;
+    .AboutFlex{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .matcha{
+        margin-left: 20vmin;
+    }
+    p{
+        margin-bottom: 5vmin;
+        margin-right: 20%;
+        font-size: 30px;
+        text-align: justify;
+        text-justify: inter-word;
+    }
+    .about-paragraph{
+        flex-shrink: 1;
+        font-family: 'Roboto Mono';
+        text-align: left;
+    }
+}

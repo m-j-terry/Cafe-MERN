@@ -40,13 +40,9 @@ body {
   .AuthPage{
     padding: 20vmin;
   }
-  .hamlet{ 
-    padding: 20vmin;
-  }
-  .hamletImg{
+  .Hamlet{
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    height: 100vh;
   }
   .About{
     margin-top: 25vmin;
@@ -146,6 +142,7 @@ body {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   overflow: hidden;
   position: fixed;
+  top: 0;
   button {
     border: none;
     background-color: transparent;
@@ -159,29 +156,3 @@ body {
   }
 }
 
-.HomePage {
-  h1 {
-    font-size: 3rem;
-  }
-
-}
-
-.AboutPage {
-  h1 {
-    font-size: 3rem;
-  }
-}
-
-.ContactPage{
-  h1 {
-    font-size: 3rem;
-  }
-
-}
-
-.AppPage {
-  h1 {
-    font-size: 3rem;
-  }
-
-}

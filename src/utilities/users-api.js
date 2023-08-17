@@ -6,6 +6,6 @@ export function signUp(userData) {
     return sendRequest(BASE_URL, 'POST', userData)
 }
 
-function login(credentials) {
+export function login(credentials) {
     sendRequest(`${BASE_URL}/login`, 'POST', credentials)
 }

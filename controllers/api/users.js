@@ -52,7 +52,7 @@ module.exports = {
 }
 
 function createJWT (user){
-    return JsonWebTokenError.sign(
+    return jwt.sign(
         { user }, 
         process.env.SECRET,
         { expiresIn: '24h' }

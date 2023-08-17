@@ -53,7 +53,8 @@ async function handleCheckout() {
 return (
     <main className={styles.NewOrderPage}>
     <aside>
-        <Logo />
+        <h1 className='title'>hamlet</h1>
+        <h2 className='title'>coffee company</h2>
         <CategoryList
         categories={categoriesRef.current}
         cart={setCart}

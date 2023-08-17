@@ -1,24 +1,19 @@
 import React, { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-// import styles from './App.module.scss';
+import styles from './App.module.scss';
 import { getUser } from '../../utilities/users-service';
 import AuthPage from '../AuthPage/AuthPage';
 import NewOrderPage from '../NewOrderPage/NewOrderPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import NavBar from '../../components/Nav/Nav'
-// import Hamlet from '../../components/Hamlet/Hamlet'
-// import About from '../../components/About/About'
-// import Menu from '../../components/Menu/Menu'
-// import FindUs from '../../components/FindUs/FindUs'
-// import ContactUs from '../../components/ContactUs/ContactUs'
 import Home from '../Home/Home'
 
 export default function App() {
     const [user, setUser] = useState(getUser())
     const [order, setOrder] = useState([])
     return (
-        <main className=/*{styles.App}*/'main'>
-            <div className=/*{styles.Nav}*/'Nav'>
+        <main>
+            <div>
                 <NavBar />
             </div>
             { order.length === 0 ? 
