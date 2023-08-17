@@ -25,13 +25,6 @@ body {
     font-family:"Lisu Bosa"; 
     text-align: center;
   }
-  div {
-    height: 100vh;
-    opacity: 0;
-    transform: translate(0, 10vh);
-    transition: all 1s;
-  }
-
   h1{
     font-size: 10vmin;
     margin-bottom: 5vmin;
@@ -44,15 +37,10 @@ body {
     font-family: 'Roboto Mono';
     text-align: left;
   }
-  .PreviousOrders{
-    background-color: lightsteelblue;
-    overflow: hidden;
-    position: fixed;
-    right: 90%;
-    top: 95%;
+  .Hamlet{
+
   }
   .About{
-    background-color: gray;
     margin-top: 25vmin;
   }
   .About-Flex{
@@ -60,7 +48,6 @@ body {
     grid-template-columns: 1fr 1fr;
   }
   .FindUs{
-    background-color: gray;
     margin-top: 25vmin;
     .flexbox{
       display: grid;
@@ -86,7 +73,6 @@ body {
     }
   }
   .Menu{
-    background-color: tan;
     text-align: center;
     .menu {
       display: grid;
