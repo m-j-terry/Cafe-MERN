@@ -5,6 +5,7 @@
 
 html{
   height: 100%;
+  width: 100%;
   background-color: white;
 }
 body {
@@ -33,10 +34,6 @@ body {
     margin-top: 5vmin;
     font-size: 7vmin;
   }
-  .about-paragraph{
-    font-family: 'Roboto Mono';
-    text-align: left;
-  }
   .AuthPage{
     padding: 20vmin;
   }
@@ -44,52 +41,8 @@ body {
     display: block;
     height: 100vh;
   }
-  .About{
-    margin-top: 25vmin;
-    margin-bottom: 25vmin;
-    .matcha{
-      position: relative;
-      left: 20%;
-    }
-    p{
-      margin-bottom: 5vmin;
-      margin-right: 20%;
-      text-align: justify;
-      text-justify: inter-word;
-    }
-    #p1{
-      margin-top: 15vmin;
-    }
-  }
-  .About-Flex{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-  .FindUs{
-    margin-top: 25vmin;
-    .flexbox{
-      display: grid;
-      grid-template-columns: 60% 1% 20%;
-      align-items: center;
-    }
-  }
   p{
     text-align: center;
   }
-  .ContactUs{
-    margin-top: 25vmin;
-    margin-bottom: 10vmin;
-    .icon {
-      max-height:35px;
-    }
-    .icons {
-      display: flex;
-      align-items: stretch;
-      justify-content: center;
-      flex-direction: row;
-      margin-bottom: 10vmin;
-    }
-  }
+
 }
-
-

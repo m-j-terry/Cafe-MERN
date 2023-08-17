@@ -7,7 +7,7 @@ import Menu from '../../components/Menu/Menu'
 import FindUs from '../../components/FindUs/FindUs'
 import ContactUs from '../../components/ContactUs/ContactUs'
 
-const NavBar = props => {
+const NavBar = (props) => {
     return(
         <nav className={styles.NavBar}>
             <button as="a" href='#Home'>home</button>

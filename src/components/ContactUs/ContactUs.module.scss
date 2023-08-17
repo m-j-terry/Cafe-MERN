@@ -1,0 +1,14 @@
+.ContactUs{
+    margin-top: 25vmin;
+    padding-bottom: 5vmin;
+    .icon {
+        max-height:35px;
+    }
+    .icons {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        flex-direction: row;
+        margin-bottom: 10vmin;
+    }
+}

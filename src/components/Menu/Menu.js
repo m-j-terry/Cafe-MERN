@@ -10,7 +10,7 @@ export default function menu({
             <h1 className='title'>menu</h1>
             <h2 className={styles.item}>coffee & tea</h2>
             <div className={styles.menuFull}>
-                <div className={styles.menu}>
+                <div className={styles.right}>
                     <p className={styles.item}>Espresso</p>
                     <button className={styles.order} onClick={() => { newOrder = [...order, 'Espresso']; setOrder(newOrder) }}>Add to order</button>
                     <p className={styles.item}>Macchiato</p>
@@ -23,7 +23,7 @@ export default function menu({
                     <button className={styles.order} onClick={() => setOrder([...order, 'Mocha'])}>Add to order</button>
                 </div>
                 <div className='this is an empty div for spacing'></div>
-                    <div className={styles.menu}>
+                    <div className={styles.left}>
                         <p className={styles.item}>Drip</p>
                         <button className={styles.order} onClick={() => setOrder([...order, 'Drip'])}>Add to order</button>
                         <p className={styles.item}>Tea</p>
@@ -38,19 +38,19 @@ export default function menu({
                 </div> 
             <h2 className={styles.item}>food</h2>
             <div className={styles.menuFull}>
-                <div className={styles.menu}>
+                <div className={styles.right}>
                     <p className={styles.item}>English Muffin</p>
                     <button className={styles.order} onClick={() => setOrder([...order, 'English Muffin'])}>Add to order</button>
                 </div>
                 <div className='this is an empty div for spacing'>       </div>
-                    <div className={styles.menu}>
+                    <div className={styles.left}>
                         <p className={styles.item}>Lemon-Raspberry Scone</p>
                         <button className={styles.order} onClick={() => setOrder([...order, 'Lemon-Raspberry Scone'])}>Add to order</button>
                     </div>
                 </div>
             <h2 className={styles.item} id={styles.byTheBag}>by the bag</h2>
             <div className={styles.menuFull}>
-                <div className={styles.menu2}>
+                <div className={styles.right2}>
                     <p></p>
                     <p className={styles.item}>Little Wolf</p>
                     <p className={styles.origin}>Laayyoo, Ethopia</p>
@@ -61,7 +61,7 @@ export default function menu({
                     <p className={styles.origin}>floral</p>
                 </div>
                 <div className='this is an empty div for spacing'>       </div>
-                    <div className={styles.menu2}>
+                    <div className={styles.left2}>
                         <p></p>
                         <p className={styles.item}>Coptic Light</p>
                         <p className={styles.origin}>Las Palmas, El Salvador</p>

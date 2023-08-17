@@ -8,16 +8,16 @@
     .matcha{
         margin-left: 20vmin;
     }
-    p{
-        margin-bottom: 5vmin;
-        margin-right: 20%;
-        font-size: 30px;
-        text-align: justify;
-        text-justify: inter-word;
+    .right{
+        margin: auto;
+        align-content: center;
     }
-    .about-paragraph{
-        flex-shrink: 1;
+    .aboutparagraph{
         font-family: 'Roboto Mono';
         text-align: left;
+        margin-bottom: 5vmin;
+        font-size: 25px;
+        text-align: justify;
+        text-justify: inter-word;
     }
 }

@@ -1,0 +1,15 @@
+.FindUs{
+    margin-top: 25vmin;
+    .flexbox{
+        display: grid;
+        grid-template-columns: 59% 1% 20%;
+        align-items: center;
+    }
+    .left{ 
+        align-items: center;
+    }
+
+    .par{
+        font-family: 'Roboto Mono';
+    }
+}

@@ -8,7 +8,7 @@ export default function About() {
                 <div>
                 <img className={styles.matcha} src="https://i.imgur.com/hCA2Jun.jpg" title="source: imgur.com"  height='450px' width='325px'/>
                 </div>
-                <div>
+                <div className={styles.right}>
                     <p className={styles.aboutparagraph}>hello.</p>
                     <p></p>
                     <p className={styles.aboutparagraph}>welcome to halmet coffee company, founded February 2nd, 2020.</p>
