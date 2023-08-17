@@ -1,75 +1,75 @@
 import { useState } from 'react'
-
-export default function Menu({
+import styles from './menu.module.scss'
+export default function menu({
     order, 
     setOrder
 }) {
     let newOrder
     return(
-        <div className='Menu' data-color='tan'>
-            <h1 className='title'>Menu</h1>
-            <h2 className='item'>coffee & tea</h2>
-            <div className='menu-full'>
-                <div className='menu'>
-                    <p className='item'>Espresso</p>
-                    <button className='order' onClick={() => { newOrder = [...order, 'Espresso']; setOrder(newOrder) }}>Add to order</button>
-                    <p className='par'>Macchiato</p>
-                    <button className='order' onClick={() => setOrder([...order, 'Machiato'])}>Add to order</button>
-                    <p className='item'>Cortado</p>
-                    <button className='order' onClick={() => setOrder([...order, 'Cortado'])}>Add to order</button>
-                    <p className='item'>Latte</p>
-                    <button className='order' onClick={() => setOrder([...order, 'Latte'])}>Add to order</button>
-                    <p className='item'>Mocha</p>
-                    <button className='order' onClick={() => setOrder([...order, 'Mocha'])}>Add to order</button>
+        <div className={styles.Menu} data-color='tan'>
+            <h1 className='title'>menu</h1>
+            <h2 className={styles.item}>coffee & tea</h2>
+            <div className={styles.menuFull}>
+                <div className={styles.menu}>
+                    <p className={styles.item}>Espresso</p>
+                    <button className={styles.order} onClick={() => { newOrder = [...order, 'Espresso']; setOrder(newOrder) }}>Add to order</button>
+                    <p className={styles.item}>Macchiato</p>
+                    <button className={styles.order} onClick={() => setOrder([...order, 'Machiato'])}>Add to order</button>
+                    <p className={styles.item}>Cortado</p>
+                    <button className={styles.order} onClick={() => setOrder([...order, 'Cortado'])}>Add to order</button>
+                    <p className={styles.item}>Latte</p>
+                    <button className={styles.order} onClick={() => setOrder([...order, 'Latte'])}>Add to order</button>
+                    <p className={styles.item}>Mocha</p>
+                    <button className={styles.order} onClick={() => setOrder([...order, 'Mocha'])}>Add to order</button>
                 </div>
                 <div className='this is an empty div for spacing'></div>
-                    <div className='menu'>
-                        <p className='item'>Drip</p>
-                        <button className='order' onClick={() => setOrder([...order, 'Drip'])}>Add to order</button>
-                        <p className='item'>Tea</p>
-                        <button className='order' onClick={() => setOrder([...order, 'Tea'])}>Add to order</button>
-                        <p className='item'>Matcha</p>
-                        <button className='order' onClick={() => setOrder([...order, 'Matcha'])}>Add to order</button>
-                        <p className='item'>Turmeric Latte</p>
-                        <button className='order' onClick={() => setOrder([...order, 'Turmeric'])}>Add to order</button>
-                        <p className='item'>Hot Chocolate</p>
-                        <button className='order' onClick={() => setOrder([...order, 'Hot Chocolate'])}>Add to order</button>
+                    <div className={styles.menu}>
+                        <p className={styles.item}>Drip</p>
+                        <button className={styles.order} onClick={() => setOrder([...order, 'Drip'])}>Add to order</button>
+                        <p className={styles.item}>Tea</p>
+                        <button className={styles.order} onClick={() => setOrder([...order, 'Tea'])}>Add to order</button>
+                        <p className={styles.item}>Matcha</p>
+                        <button className={styles.order} onClick={() => setOrder([...order, 'Matcha'])}>Add to order</button>
+                        <p className={styles.item}>Turmeric Latte</p>
+                        <button className={styles.order} onClick={() => setOrder([...order, 'Turmeric'])}>Add to order</button>
+                        <p className={styles.item}>Hot Chocolate</p>
+                        <button className={styles.order} onClick={() => setOrder([...order, 'Hot Chocolate'])}>Add to order</button>
                     </div>
                 </div> 
-            <h2 className='item'>food</h2>
-            <div className='menu-full'>
-                <div className='menu'>
-                    <p className='item'>English Muffin</p>
-                    <button className='order' onClick={() => setOrder([...order, 'English Muffin'])}>Add to order</button>
+            <h2 className={styles.item}>food</h2>
+            <div className={styles.menuFull}>
+                <div className={styles.menu}>
+                    <p className={styles.item}>English Muffin</p>
+                    <button className={styles.order} onClick={() => setOrder([...order, 'English Muffin'])}>Add to order</button>
                 </div>
                 <div className='this is an empty div for spacing'>       </div>
-                    <div className='menu'>
-                        <p className='item'>Lemon-Raspberry Scone</p>
-                        <button className='order' onClick={() => setOrder([...order, 'Lemon-Raspberry Scone'])}>Add to order</button>
+                    <div className={styles.menu}>
+                        <p className={styles.item}>Lemon-Raspberry Scone</p>
+                        <button className={styles.order} onClick={() => setOrder([...order, 'Lemon-Raspberry Scone'])}>Add to order</button>
                     </div>
                 </div>
-            <h2 className='item'>by the bag</h2>
-            <div className='menu-full'>
-                <div className='menu2'>
+            <h2 className={styles.item} id={styles.byTheBag}>by the bag</h2>
+            <div className={styles.menuFull}>
+                <div className={styles.menu2}>
                     <p></p>
-                    <p className='item'>Little Wolf</p>
-                    <p className='origin'>Laayyoo, Ethopia</p>
-                    <button className='order' onClick={() => setOrder([...order, 'Little Wolf'])}>Add to Order</button>
-                    <p className='origin'>notes:</p>
-                    <p className='origin'>peach,</p>
-                    <p className='origin'>lychee,</p>
-                    <p className='origin'>floral</p>
+                    <p className={styles.item}>Little Wolf</p>
+                    <p className={styles.origin}>Laayyoo, Ethopia</p>
+                    <button className={styles.order} onClick={() => setOrder([...order, 'Little Wolf'])}>Add to Order</button>
+                    <p className={styles.origin}>notes:</p>
+                    <p className={styles.origin}>peach,</p>
+                    <p className={styles.origin}>lychee,</p>
+                    <p className={styles.origin}>floral</p>
                 </div>
                 <div className='this is an empty div for spacing'>       </div>
-                    <div className='menu2'>
+                    <div className={styles.menu2}>
                         <p></p>
-                        <p className='item'>Coptic Light</p>
-                        <p className='origin'>Las Palmas, El Salvador</p>
-                        <button className='order' onClick={() => setOrder([...order, 'Coptic Light'])}>Add to Order</button>
-                        <p className='origin'>notes:</p>
-                        <p className='origin'> milk chocolate,</p>
-                        <p className='origin'>candied pecan,</p>
-                        <p className='origin'>caramel</p>
+                        <p className={styles.item}>Coptic Light</p>
+                        <p className={styles.origin}>Las Palmas, El Salvador</p>
+                        <button className={styles.order} onClick={() => setOrder([...order, 'Coptic Light'])}>Add to Order</button>
+                        <p className={styles.origin}>notes:</p>
+                        <p className={styles.origin}> milk chocolate,</p>
+                        <p className={styles.origin}>candied pecan,</p>
+                        <p className={styles.origin}>caramel</p>
                 </div>
             </div>
         </div>
