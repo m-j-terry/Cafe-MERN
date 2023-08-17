@@ -16,6 +16,7 @@ import Home from '../Home/Home'
 export default function App() {
     const [user, setUser] = useState(getUser())
     const [order, setOrder] = useState([])
+    const [orders, setOrders] = useState([])
     return (
         <main className=/*{styles.App}*/'main'>
             <div className=/*{styles.Nav}*/'Nav'>
@@ -25,6 +26,8 @@ export default function App() {
                 <Home 
                     order={order}
                     setOrder={setOrder}
+                    orders={orders}
+                    setOrders={setOrders}
                 />
                 : 
                 user ? 

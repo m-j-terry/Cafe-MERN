@@ -1,10 +1,10 @@
 export default function About() {
     return(
-        <div className>
+        <div className='About'>
             <h1 className='title'>about</h1>
             <div className='About-Flex'>
                 <div>
-                    <img src='https://imgur.com/a/BbfqRSN' height='250px' width='100px'/>
+                    <a href="https://imgur.com/hCA2Jun"><img src='https://i.imgur.com/hCA2Jun.jpg' height='250px' width='100px'/></a>
                 </div>
                 <div>
                     <p className='about-paragraph'>hello.</p>

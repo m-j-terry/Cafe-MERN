@@ -21,7 +21,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--tan-4);
+  background-color: var(--white);
   padding: 2vmin;
   height: 100vh;
 }
@@ -119,8 +119,8 @@ input:focus {
 button, a.button {
   margin: 1vmin;
   padding: 1vmin;
-  color: var(--white);
-  background-color: var(--orange);
+  color: black;
+  background-color: var(--white);
   font-size: 2vmin;
   font-weight: bold;
   text-decoration: none;
@@ -184,48 +184,6 @@ button[type=submit] {
   justify-content: space-between;
   align-items: center;
   margin: 3vmin 2vmin;
-}
-/*!*****************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/components/MenuListItem/MenuListItem.module.scss ***!
-  \*****************************************************************************************************************************************************************************************/
-.X4tFBfG4MKknHvd01CKE {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 3vmin;
-  padding: 2vmin;
-  color: var(--text-light);
-  background-color: var(--white);
-  border: 0.1vmin solid var(--tan-3);
-  border-radius: 1vmin;
-  font-size: 4vmin;
-}
-
-.X4tFBfG4MKknHvd01CKE .dTwdG1Vxh_kNAcuyMLbz {
-  height: 8vw;
-  width: 8vw;
-  font-size: 4vw;
-  background-color: var(--tan-1);
-  border: 0.1vmin solid var(--tan-3);
-  border-radius: 1vmin;
-}
-
-.X4tFBfG4MKknHvd01CKE .fO9kiPygtr0vmzsXoUxA {
-  display: flex;
-  flex-direction: column;
-}
-
-.X4tFBfG4MKknHvd01CKE .fO9kiPygtr0vmzsXoUxA span {
-  font-size: 1.7vw;
-  text-align: center;
-  color: var(--text-light);
-}
-
-.X4tFBfG4MKknHvd01CKE .VR1OCl60qOXrRx1IzVEa {
-  font-size: 2vw;
-  text-align: center;
-  color: var(--text-light);
 }
 /*!***************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/components/OrderDetail/OrderDetail.module.scss ***!
@@ -316,25 +274,6 @@ button[type=submit] {
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/components/UserLogOut/UserLogOut.module.scss ***!
   \*************************************************************************************************************************************************************************************/
 
-/*!********************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/pages/OrderHistoryPage/OrderHistoryPage.module.scss ***!
-  \********************************************************************************************************************************************************************************************/
-.U7F51i6q23MB43wS4GeC {
-  height: 100%;
-  display: grid;
-  grid-template-columns: 1.6fr 3.5fr 3fr;
-  grid-template-rows: 1fr;
-  background-color: var(--white);
-  border-radius: 2vmin;
-}
-
-.U7F51i6q23MB43wS4GeC .Gl976TgPIRmY9_yeWoZA {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  margin: 3vmin 2vmin;
-}
 /*!*******************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/components/OrderListItem/OrderListItem.module.scss ***!
   \*******************************************************************************************************************************************************************************************/
@@ -389,4 +328,4 @@ button[type=submit] {
   top: 50vh;
 }
 
-/*# sourceMappingURL=App.cc97f54d665acd6c4448e94e3b831bed.js.map*/
+/*# sourceMappingURL=App.affbb0d1bd76b2601a6182a3d14cd84a.js.map*/
