@@ -4,7 +4,7 @@ export default function About() {
             <h1 className='title'>about</h1>
             <div className='About-Flex'>
                 <div>
-                <a href="https://imgur.com/hCA2Jun"><img className='matcha' src="https://i.imgur.com/hCA2Jun.jpg" title="source: imgur.com"  height='600px' width='450px'/></a>
+                <img className='matcha' src="https://i.imgur.com/hCA2Jun.jpg" title="source: imgur.com"  height='450px' width='325px'/>
                 </div>
                 <div>
                     <p className='about-paragraph' id='p1'>hello.</p>

@@ -37,6 +37,12 @@ body {
     font-family: 'Roboto Mono';
     text-align: left;
   }
+  .AuthPage{
+    padding: 20vmin;
+  }
+  .hamlet{ 
+    padding: 20vmin;
+  }
   .hamletImg{
     display: block;
     margin-left: auto;
@@ -136,6 +142,7 @@ body {
 .NavBar {
   background-color: white;
   display: grid;
+  width: 100vw;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   overflow: hidden;
   position: fixed;
