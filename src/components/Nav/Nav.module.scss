@@ -1,9 +1,20 @@
-.nav {
-    font-family: 'Roboto Mono'
-}
-
-button {
-    border: none;
-    background-color: transparent;
-    font-size: 5vmin;
+.NavBar {
+    background-color: white;
+    display: grid;
+    width: 100vw;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    button {
+        border: none;
+        background-color: transparent;
+        font-size: 3vmin;
+        color: black;
+        font-family: 'Roboto Mono';
+        &:link, &:visited {
+            color: rgb(25, 97, 252);
+            text-decoration: none;
+        }
+    }
 }
