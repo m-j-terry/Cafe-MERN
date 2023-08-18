@@ -1,6 +1,71 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
+
+/***/ "./models/category.js":
+/*!****************************!*\
+  !*** ./models/category.js ***!
+  \****************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+const mongoose = __webpack_require__(/*! mongoose */ "./node_modules/mongoose/dist/browser.umd.js");
+const Schema = mongoose.Schema;
+const categorySchema = new Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  sortOrder: Number
+}, {
+  timestamps: true
+});
+module.exports = mongoose.model('Category', categorySchema);
+
+/***/ }),
+
+/***/ "./models/item.js":
+/*!************************!*\
+  !*** ./models/item.js ***!
+  \************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+const {
+  model,
+  Schema
+} = __webpack_require__(/*! mongoose */ "./node_modules/mongoose/dist/browser.umd.js");
+// const mongoose = require('mongoose')
+// const Schema = mongoose.Schema
+__webpack_require__(/*! ./category */ "./models/category.js");
+const itemSchema = new Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  imageUrl: {
+    type: String,
+    required: true
+  },
+  category: {
+    type: Schema.Types.ObjectId,
+    ref: 'Category'
+  },
+  price: {
+    type: Number,
+    required: true,
+    default: 0
+  }
+}, {
+  timestamps: true
+});
+
+// const Item = mongoose.model('Item', itemSchema)
+
+// module.exports = mongoose.model('Item', itemSchema)
+module.exports = {
+  itemSchema,
+  Item: model('Item', itemSchema)
+};
+
+/***/ }),
 
 /***/ "./src/components/About/About.js":
 /*!***************************************!*\
@@ -8,6 +73,7 @@
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ About)
 /* harmony export */ });
@@ -48,6 +114,7 @@ function About() {
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ CategoryList)
 /* harmony export */ });
@@ -65,7 +132,7 @@ function CategoryList(_ref) {
     className: cat === activeCat ? styles.active : ''
   }, cat));
   return /*#__PURE__*/React.createElement("ul", {
-    className: /*{styles.CategoryList}*/"CategoryList"
+    className: styles.CategoryList
   }, cats);
 }
 
@@ -77,6 +144,7 @@ function CategoryList(_ref) {
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ ContactUs)
 /* harmony export */ });
@@ -111,6 +179,7 @@ function ContactUs() {
   \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ FindUs)
 /* harmony export */ });
@@ -189,6 +258,7 @@ function FindUs() {
   \*****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Hamlet)
 /* harmony export */ });
@@ -216,6 +286,7 @@ function Hamlet() {
   \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ LineItem)
 /* harmony export */ });
@@ -232,7 +303,7 @@ function LineItem(_ref) {
     className: _LineItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].LineItem
   }, /*#__PURE__*/React.createElement("div", {
     className: "flex-ctr-ctr"
-  }, lineItem.item.emoji), /*#__PURE__*/React.createElement("div", {
+  }, lineItem.item.imageUrl), /*#__PURE__*/React.createElement("div", {
     className: "flex-ctr-ctr flex-col"
   }, /*#__PURE__*/React.createElement("span", {
     className: "align-ctr"
@@ -260,6 +331,7 @@ function LineItem(_ref) {
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ LoginForm)
 /* harmony export */ });
@@ -321,7 +393,9 @@ function LoginForm(_ref) {
     required: true
   }), /*#__PURE__*/React.createElement("button", {
     type: "submit"
-  }, "LOG IN"))));
+  }, "LOG IN"))), /*#__PURE__*/React.createElement("p", {
+    className: "error-message"
+  }, "&nbsp ", error));
 }
 
 /***/ }),
@@ -332,6 +406,7 @@ function LoginForm(_ref) {
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Logo)
 /* harmony export */ });
@@ -340,8 +415,12 @@ function LoginForm(_ref) {
 
 function Logo() {
   return /*#__PURE__*/React.createElement("div", {
-    className: /*{styles.Logo}*/"Logo"
-  }, /*#__PURE__*/React.createElement("div", null, "SEI"), /*#__PURE__*/React.createElement("div", null, "CAFE"));
+    className: _Logo_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].Logo
+  }, /*#__PURE__*/React.createElement("h1", {
+    className: "title"
+  }, "hamlet"), /*#__PURE__*/React.createElement("h2", {
+    className: "title"
+  }, "coffee company"));
 }
 
 /***/ }),
@@ -352,150 +431,159 @@ function Logo() {
   \*************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ menu)
 /* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./menu.module.scss */ "./src/components/Menu/menu.module.scss");
+/* harmony import */ var _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./menu.module.scss */ "./src/components/Menu/menu.module.scss");
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-
+const {
+  Item
+} = __webpack_require__(/*! ../../../models/item */ "./models/item.js");
 function menu(_ref) {
   let {
-    order,
     setOrder
   } = _ref;
-  let newOrder;
+  async function startOrder(itemName) {
+    console.log(Item);
+    const foundItem = await Item.findOne({
+      name: itemName
+    });
+    console.log('item = ' + foundItem);
+    if (foundItem._id) {
+      setOrder(foundItem._id);
+    } else {
+      console.log('item not found');
+      return null;
+    }
+  }
   return /*#__PURE__*/React.createElement("div", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].Menu,
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].Menu,
     "data-color": "tan"
   }, /*#__PURE__*/React.createElement("h1", {
     className: "title"
   }, "menu"), /*#__PURE__*/React.createElement("h2", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].item
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].item
   }, "coffee & tea"), /*#__PURE__*/React.createElement("div", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].menuFull
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].menuFull
   }, /*#__PURE__*/React.createElement("div", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].right
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].right
   }, /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].item
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].item
   }, "Espresso"), /*#__PURE__*/React.createElement("button", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].order,
-    onClick: () => {
-      newOrder = [...order, 'Espresso'];
-      setOrder(newOrder);
-    }
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].order,
+    onClick: () => startOrder('Espresso')
   }, "Add to order"), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].item
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].item
   }, "Macchiato"), /*#__PURE__*/React.createElement("button", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].order,
-    onClick: () => setOrder([...order, 'Machiato'])
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].order,
+    onClick: () => startOrder('Machiato')
   }, "Add to order"), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].item
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].item
   }, "Cortado"), /*#__PURE__*/React.createElement("button", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].order,
-    onClick: () => setOrder([...order, 'Cortado'])
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].order,
+    onClick: () => startOrder('Cortado')
   }, "Add to order"), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].item
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].item
   }, "Latte"), /*#__PURE__*/React.createElement("button", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].order,
-    onClick: () => setOrder([...order, 'Latte'])
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].order,
+    onClick: () => startOrder('Latte')
   }, "Add to order"), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].item
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].item
   }, "Mocha"), /*#__PURE__*/React.createElement("button", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].order,
-    onClick: () => setOrder([...order, 'Mocha'])
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].order,
+    onClick: () => startOrder('Mocha')
   }, "Add to order")), /*#__PURE__*/React.createElement("div", {
     className: "this is an empty div for spacing"
   }), /*#__PURE__*/React.createElement("div", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].left
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].left
   }, /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].item
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].item
   }, "Drip"), /*#__PURE__*/React.createElement("button", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].order,
-    onClick: () => setOrder([...order, 'Drip'])
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].order,
+    onClick: () => startOrder('Drip')
   }, "Add to order"), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].item
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].item
   }, "Tea"), /*#__PURE__*/React.createElement("button", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].order,
-    onClick: () => setOrder([...order, 'Tea'])
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].order,
+    onClick: () => startOrder('Tea')
   }, "Add to order"), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].item
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].item
   }, "Matcha"), /*#__PURE__*/React.createElement("button", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].order,
-    onClick: () => setOrder([...order, 'Matcha'])
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].order,
+    onClick: () => startOrder('Matcha')
   }, "Add to order"), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].item
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].item
   }, "Turmeric Latte"), /*#__PURE__*/React.createElement("button", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].order,
-    onClick: () => setOrder([...order, 'Turmeric'])
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].order,
+    onClick: () => startOrder('Turmeric')
   }, "Add to order"), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].item
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].item
   }, "Hot Chocolate"), /*#__PURE__*/React.createElement("button", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].order,
-    onClick: () => setOrder([...order, 'Hot Chocolate'])
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].order,
+    onClick: () => startOrder('Hot Chocolate')
   }, "Add to order"))), /*#__PURE__*/React.createElement("h2", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].item
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].item
   }, "food"), /*#__PURE__*/React.createElement("div", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].menuFull
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].menuFull
   }, /*#__PURE__*/React.createElement("div", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].right
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].right
   }, /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].item
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].item
   }, "English Muffin"), /*#__PURE__*/React.createElement("button", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].order,
-    onClick: () => setOrder([...order, 'English Muffin'])
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].order,
+    onClick: () => startOrder('English Muffin')
   }, "Add to order")), /*#__PURE__*/React.createElement("div", {
     className: "this is an empty div for spacing"
   }, "       "), /*#__PURE__*/React.createElement("div", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].left
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].left
   }, /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].item
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].item
   }, "Lemon-Raspberry Scone"), /*#__PURE__*/React.createElement("button", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].order,
-    onClick: () => setOrder([...order, 'Lemon-Raspberry Scone'])
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].order,
+    onClick: () => startOrder('Lemon-Raspberry Scone')
   }, "Add to order"))), /*#__PURE__*/React.createElement("h2", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].item,
-    id: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].byTheBag
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].item,
+    id: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].byTheBag
   }, "by the bag"), /*#__PURE__*/React.createElement("div", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].menuFull
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].menuFull
   }, /*#__PURE__*/React.createElement("div", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].right2
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].right2
   }, /*#__PURE__*/React.createElement("p", null), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].item
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].item
   }, "Little Wolf"), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].origin
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].origin
   }, "Laayyoo, Ethopia"), /*#__PURE__*/React.createElement("button", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].order,
-    onClick: () => setOrder([...order, 'Little Wolf'])
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].order,
+    onClick: () => startOrder('Little Wolf')
   }, "Add to Order"), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].origin
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].origin
   }, "notes:"), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].origin
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].origin
   }, "peach,"), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].origin
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].origin
   }, "lychee,"), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].origin
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].origin
   }, "floral")), /*#__PURE__*/React.createElement("div", {
     className: "this is an empty div for spacing"
   }, "       "), /*#__PURE__*/React.createElement("div", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].left2
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].left2
   }, /*#__PURE__*/React.createElement("p", null), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].item
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].item
   }, "Coptic Light"), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].origin
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].origin
   }, "Las Palmas, El Salvador"), /*#__PURE__*/React.createElement("button", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].order,
-    onClick: () => setOrder([...order, 'Coptic Light'])
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].order,
+    onClick: () => startOrder('Coptic Light')
   }, "Add to Order"), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].origin
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].origin
   }, "notes:"), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].origin
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].origin
   }, " milk chocolate,"), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].origin
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].origin
   }, "candied pecan,"), /*#__PURE__*/React.createElement("p", {
-    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].origin
+    className: _menu_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].origin
   }, "caramel"))));
 }
 
@@ -507,6 +595,7 @@ function menu(_ref) {
   \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ MenuList)
 /* harmony export */ });
@@ -525,7 +614,7 @@ function MenuList(_ref) {
     menuItem: item
   }));
   return /*#__PURE__*/React.createElement("main", {
-    className: /*{styles.MenuList}*/"MenuList"
+    className: styles.MenuList
   }, items);
 }
 
@@ -537,6 +626,7 @@ function MenuList(_ref) {
   \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ MenuListItem)
 /* harmony export */ });
@@ -552,7 +642,7 @@ function MenuListItem(_ref) {
     className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].MenuListItem
   }, /*#__PURE__*/React.createElement("div", {
     className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].image + ' ' + 'flex-ctr-ctr'
-  }, menuItem.emoji), /*#__PURE__*/React.createElement("div", {
+  }, menuItem.imageUrl), /*#__PURE__*/React.createElement("div", {
     className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].name
   }, menuItem.name), /*#__PURE__*/React.createElement("div", {
     className: _MenuListItem_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].buy
@@ -570,6 +660,7 @@ function MenuListItem(_ref) {
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -635,6 +726,7 @@ const NavBar = props => {
   \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ OrderDetail)
 /* harmony export */ });
@@ -689,6 +781,7 @@ function OrderDetail(_ref) {
   \***********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ OrderList)
 /* harmony export */ });
@@ -724,6 +817,7 @@ function OrderList(_ref) {
   \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ OrderListItem)
 /* harmony export */ });
@@ -758,6 +852,7 @@ function OrderListItem(_ref) {
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ SignUpForm)
 /* harmony export */ });
@@ -859,6 +954,7 @@ class SignUpForm extends react__WEBPACK_IMPORTED_MODULE_0__.Component {
   \*************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ UserLogOut)
 /* harmony export */ });
@@ -894,6 +990,7 @@ function UserLogOut(_ref) {
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.scss */ "./src/style.scss");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
@@ -919,6 +1016,7 @@ root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createEle
   \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ App)
 /* harmony export */ });
@@ -946,7 +1044,9 @@ function App() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Nav_Nav__WEBPACK_IMPORTED_MODULE_5__["default"], null)), order.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Home_Home__WEBPACK_IMPORTED_MODULE_6__["default"], {
     order: order,
     setOrder: setOrder
-  }) : user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NewOrderPage_NewOrderPage__WEBPACK_IMPORTED_MODULE_3__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AuthPage_AuthPage__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }) : user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NewOrderPage_NewOrderPage__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    order: order
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AuthPage_AuthPage__WEBPACK_IMPORTED_MODULE_2__["default"], {
     setUser: setUser
   }));
 }
@@ -979,6 +1079,7 @@ function App() {
   \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ AuthPage)
 /* harmony export */ });
@@ -1000,11 +1101,7 @@ function AuthPage(_ref) {
   const [showLogin, setShowLogin] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   return /*#__PURE__*/React.createElement("main", {
     className: /*{styles.AuthPage}*/"AuthPage"
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", {
-    className: "title"
-  }, "hamlet"), /*#__PURE__*/React.createElement("h2", {
-    className: "title"
-  }, "coffee company"), /*#__PURE__*/React.createElement("h3", {
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_components_Logo_Logo__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/React.createElement("h3", {
     onClick: () => setShowLogin(!showLogin)
   }, showLogin ? 'SIGN UP' : 'LOG IN')), showLogin ? /*#__PURE__*/React.createElement(_components_LoginForm_LoginForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
     setUser: setUser
@@ -1021,6 +1118,7 @@ function AuthPage(_ref) {
   \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ Home)
 /* harmony export */ });
@@ -1072,6 +1170,7 @@ function Home(_ref) {
   \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ NewOrderPage)
 /* harmony export */ });
@@ -1099,7 +1198,8 @@ function Home(_ref) {
 function NewOrderPage(_ref) {
   let {
     user,
-    setUser
+    setUser,
+    order
   } = _ref;
   const [menuItems, setMenuItems] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [activeCat, setActiveCat] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
@@ -1115,6 +1215,7 @@ function NewOrderPage(_ref) {
       }, []);
       setMenuItems(items);
       setActiveCat(categoriesRef.current[0]);
+      console.log('menu = ' + items);
     }
     getItems();
     async function getCart() {
@@ -1122,6 +1223,8 @@ function NewOrderPage(_ref) {
       setCart(cart);
     }
     getCart();
+    handleAddToOrder(order);
+    console.log('cart = ' + cart);
   }, []);
 
   /*--- event handlers ---*/
@@ -1171,6 +1274,7 @@ function NewOrderPage(_ref) {
   \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* unused harmony export default */
 /* harmony import */ var _OrderHistoryPage_module_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OrderHistoryPage.module.scss */ "./src/pages/OrderHistoryPage/OrderHistoryPage.module.scss");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -1242,6 +1346,7 @@ function OrderHistoryPage(_ref) {
   \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   getAll: () => (/* binding */ getAll)
 /* harmony export */ });
@@ -1264,6 +1369,7 @@ function getById(id) {
   \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   addItemToCart: () => (/* binding */ addItemToCart),
 /* harmony export */   checkout: () => (/* binding */ checkout),
@@ -1303,6 +1409,7 @@ function getOrderHistory() {
   \***************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ sendRequest)
 /* harmony export */ });
@@ -1338,6 +1445,7 @@ async function sendRequest(url) {
   \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   login: () => (/* binding */ login),
 /* harmony export */   signUp: () => (/* binding */ signUp)
@@ -1360,6 +1468,7 @@ function login(credentials) {
   \****************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   getToken: () => (/* binding */ getToken),
 /* harmony export */   getUser: () => (/* binding */ getUser),
@@ -1405,6 +1514,7 @@ function logOut() {
   \***************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -1459,6 +1569,7 @@ ___CSS_LOADER_EXPORT___.locals = {
   \***********************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -1502,6 +1613,7 @@ ___CSS_LOADER_EXPORT___.locals = {
   \*****************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -1546,6 +1658,7 @@ ___CSS_LOADER_EXPORT___.locals = {
   \*****************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -1583,6 +1696,7 @@ ___CSS_LOADER_EXPORT___.locals = {
   \*********************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -1644,6 +1758,7 @@ ___CSS_LOADER_EXPORT___.locals = {
   \*************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -1684,6 +1799,7 @@ ___CSS_LOADER_EXPORT___.locals = {
   \*************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -1779,6 +1895,7 @@ ___CSS_LOADER_EXPORT___.locals = {
   \*****************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -1848,6 +1965,7 @@ ___CSS_LOADER_EXPORT___.locals = {
   \***********************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -1895,6 +2013,7 @@ ___CSS_LOADER_EXPORT___.locals = {
   \***************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -1974,6 +2093,7 @@ ___CSS_LOADER_EXPORT___.locals = {
   \***********************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -2020,6 +2140,7 @@ ___CSS_LOADER_EXPORT___.locals = {
   \*******************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -2077,6 +2198,7 @@ ___CSS_LOADER_EXPORT___.locals = {
   \*************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -2103,6 +2225,7 @@ ___CSS_LOADER_EXPORT___.locals = {};
   \******************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -2133,6 +2256,7 @@ ___CSS_LOADER_EXPORT___.locals = {
   \************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -2176,6 +2300,7 @@ ___CSS_LOADER_EXPORT___.locals = {
   \********************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -2220,6 +2345,7 @@ ___CSS_LOADER_EXPORT___.locals = {
   \***************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -2410,6 +2536,7 @@ ___CSS_LOADER_EXPORT___.locals = {
   \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -2463,6 +2590,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -2516,6 +2644,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -2569,6 +2698,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \**************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -2622,6 +2752,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -2673,8 +2804,12 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /*!**********************************************!*\
   !*** ./src/components/Logo/Logo.module.scss ***!
   \**********************************************/
-/***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
@@ -2714,7 +2849,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 
-       /* unused harmony default export */ var __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_Logo_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_Logo_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_Logo_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_Logo_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_Logo_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_Logo_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),
@@ -2725,6 +2860,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -2778,6 +2914,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -2831,6 +2968,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -2884,6 +3022,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -2937,6 +3076,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -2990,6 +3130,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -3043,6 +3184,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \**********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -3096,6 +3238,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \***************************************/
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
@@ -3146,6 +3289,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -3199,6 +3343,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \*****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
@@ -3252,6 +3397,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
   \************************/
 /***/ ((__unused_webpack_module, __unused_webpack___webpack_exports__, __webpack_require__) => {
 
+"use strict";
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
@@ -3316,7 +3462,7 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
@@ -3462,9 +3608,9 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendors-node_modules_css-loader_dist_runtime_api_js-node_modules_css-loader_dist_runtime_sour-354ecd"], () => (__webpack_require__("./src/index.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendors-node_modules_css-loader_dist_runtime_api_js-node_modules_css-loader_dist_runtime_sour-b42dfe"], () => (__webpack_require__("./src/index.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.579736815018050db921dd68f1809002.js.map
+//# sourceMappingURL=App.11aa9501d3972685ab5627b513f5c6b1.js.map

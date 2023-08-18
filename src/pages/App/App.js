@@ -23,7 +23,7 @@ export default function App() {
                 />
                 : 
                 user ? 
-                    <NewOrderPage />
+                    <NewOrderPage order={order} />
                     :
                     <AuthPage setUser={setUser} />
             }

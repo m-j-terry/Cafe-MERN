@@ -10,7 +10,7 @@ export default function MenuList({ menuItems, handleAddToOrder }) {
     />
     ) 
     return (
-        <main className=/*{styles.MenuList}*/'MenuList'>
+        <main className={styles.MenuList}>
             {items}
         </main>
     ) 

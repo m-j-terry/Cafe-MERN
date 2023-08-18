@@ -10,7 +10,7 @@ export default function CategoryList({ categories, activeCat, setActiveCat }) {
         </li>
     )
     return (
-        <ul className=/*{styles.CategoryList}*/'CategoryList'>
+        <ul className={styles.CategoryList}>
             {cats}
         </ul>
     )

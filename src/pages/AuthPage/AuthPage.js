@@ -10,8 +10,7 @@ export default function AuthPage({ setUser }) {
         return (
         <main className=/*{styles.AuthPage}*/'AuthPage'>
             <div>
-                <h1 className='title'>hamlet</h1>
-                <h2 className='title'>coffee company</h2>
+                <Logo />
                 <h3 onClick={() => setShowLogin(!showLogin)}>{showLogin ? 'SIGN UP' : 'LOG IN'}</h3>
             </div>
             {showLogin ? <LoginForm setUser={setUser} /> : <SignUpForm setUser={setUser} />}
