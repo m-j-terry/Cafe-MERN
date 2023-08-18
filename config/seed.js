@@ -2,10 +2,10 @@ require('dotenv').config()
 require('./database')
 
 const Category = require('../models/category')
-const Item = require('../models/item')
+const { Item } = require('../models/item')
 
-(async function() {
-    await Category.deleteMany({});
+const seed = async function() {
+    await Category.deleteMany({})
     const categories = await Category.create([
         {name: 'Espresso', sortOrder: 10},
         {name: 'Specialties', sortOrder: 20},
@@ -44,4 +44,5 @@ const Item = require('../models/item')
 
     process.exit()
 
-})()
+}
+seed()

@@ -1,6 +1,16 @@
-const mongoose = require('mongoose')
+const { model, Schema } = require('mongoose')
 require('./category')
 
-const itemSchema = require('./itemSchema')
+const itemSchema = new Schema({
+    name: { type: String, required: true },
+    imageUrl: { type: String, required: true },
+    category: { type: Schema.Types.ObjectId, ref: 'Category' },
+    price: { type: Number, required: true, default: 0 }
+}, {
+    timestamps: true
+})
 
-module.exports = mongoose.model('Item', itemSchema)
+module.exports = {
+    itemSchema,
+    Item: model('Item', itemSchema)
+}
