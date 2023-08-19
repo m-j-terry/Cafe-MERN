@@ -56,7 +56,7 @@ const itemSchema = new Schema({
 }, {
   timestamps: true
 });
-const Item = mongoose.model('Item', itemSchema);
+const Item = model('Item', itemSchema);
 
 // module.exports = mongoose.model('Item', itemSchema)
 module.exports = {
@@ -88,10 +88,7 @@ function About() {
     className: _About_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].AboutFlex
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
     className: _About_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].matcha,
-    src: "https://i.imgur.com/hCA2Jun.jpg",
-    title: "source: imgur.com",
-    height: "450px",
-    width: "325px"
+    src: "https://i.imgur.com/DQznltT.jpg"
   })), /*#__PURE__*/React.createElement("div", {
     className: _About_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].right
   }, /*#__PURE__*/React.createElement("p", {
@@ -474,11 +471,9 @@ function menu(_ref) {
   } = _ref;
   async function startOrder(itemName) {
     try {
-      // const foundItem = await Item.findOne({ name: itemName })
-      // send a get request to /api/items/:name
-      console.log(itemName);
-      const foundItem = await _utilities_items_api__WEBPACK_IMPORTED_MODULE_1__.getByName(itemName);
-      console.log('item = ' + foundItem);
+      // Pseudocode: send a get request to /api/items/name/:name
+
+      const foundItem = await _utilities_items_api__WEBPACK_IMPORTED_MODULE_1__.getByName(encodeURIComponent(itemName));
       if (foundItem._id) {
         setOrder(foundItem._id);
         // setOrder(itemName)
@@ -1120,12 +1115,13 @@ function App() {
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_LoginForm_LoginForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/LoginForm/LoginForm */ "./src/components/LoginForm/LoginForm.js");
-/* harmony import */ var _components_SignUpForm_SignUpForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/SignUpForm/SignUpForm */ "./src/components/SignUpForm/SignUpForm.js");
-/* harmony import */ var _components_Logo_Logo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/Logo/Logo */ "./src/components/Logo/Logo.js");
+/* harmony import */ var _AuthPage_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AuthPage.module.scss */ "./src/pages/AuthPage/AuthPage.module.scss");
+/* harmony import */ var _components_LoginForm_LoginForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/LoginForm/LoginForm */ "./src/components/LoginForm/LoginForm.js");
+/* harmony import */ var _components_SignUpForm_SignUpForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/SignUpForm/SignUpForm */ "./src/components/SignUpForm/SignUpForm.js");
+/* harmony import */ var _components_Logo_Logo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Logo/Logo */ "./src/components/Logo/Logo.js");
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-// import styles from './AuthPage.module.scss' 
+
 
 
 
@@ -1135,12 +1131,12 @@ function AuthPage(_ref) {
   } = _ref;
   const [showLogin, setShowLogin] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true);
   return /*#__PURE__*/React.createElement("main", {
-    className: /*{styles.AuthPage}*/"AuthPage"
-  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_components_Logo_Logo__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/React.createElement("h3", {
+    className: _AuthPage_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].AuthPage
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_components_Logo_Logo__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/React.createElement("h3", {
     onClick: () => setShowLogin(!showLogin)
-  }, showLogin ? 'SIGN UP' : 'LOG IN')), showLogin ? /*#__PURE__*/React.createElement(_components_LoginForm_LoginForm__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  }, showLogin ? 'SIGN UP' : 'LOG IN')), showLogin ? /*#__PURE__*/React.createElement(_components_LoginForm_LoginForm__WEBPACK_IMPORTED_MODULE_2__["default"], {
     setUser: setUser
-  }) : /*#__PURE__*/React.createElement(_components_SignUpForm_SignUpForm__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }) : /*#__PURE__*/React.createElement(_components_SignUpForm_SignUpForm__WEBPACK_IMPORTED_MODULE_3__["default"], {
     setUser: setUser
   }));
 }
@@ -1459,6 +1455,7 @@ function getOrderHistory() {
 async function sendRequest(url) {
   let method = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'GET';
   let payload = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  // fetch takes an optional options object as the 2nd argument used to include a data payload, set headers, etc.
   const options = {
     method
   };
@@ -1470,12 +1467,16 @@ async function sendRequest(url) {
   }
   const token = (0,_users_service__WEBPACK_IMPORTED_MODULE_0__.getToken)();
   if (token) {
+    // ensure headers object exists
     options.headers = options.headers || {};
+    // add token to an Authorization header 
+    // prefacing with 'Bearer' is recommended in the HTTP specification
     options.headers.Authorization = "Bearer ".concat(token);
   }
   const res = await fetch(url, options);
+  // res.ok will be false if the status code set to 4XX in the controller action
   if (res.ok) return res.json();
-  throw new Error('bad request');
+  throw new Error('Bad Request');
 }
 
 /***/ }),
@@ -1498,7 +1499,7 @@ function signUp(userData) {
   return (0,_send_request__WEBPACK_IMPORTED_MODULE_0__["default"])(BASE_URL, 'POST', userData);
 }
 function login(credentials) {
-  (0,_send_request__WEBPACK_IMPORTED_MODULE_0__["default"])("".concat(BASE_URL, "/login"), 'POST', credentials);
+  return (0,_send_request__WEBPACK_IMPORTED_MODULE_0__["default"])("".concat(BASE_URL, "/login"), 'POST', credentials);
 }
 
 /***/ }),
@@ -1578,6 +1579,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.jNSWZVvXw3pZSAmHDvkZ {
 }
 .jNSWZVvXw3pZSAmHDvkZ .xC7DtFSni0cOvFh08HoZ {
   margin-left: 20vmin;
+  height: 80vmin;
+  width: 60vmin;
 }
 .jNSWZVvXw3pZSAmHDvkZ .qXTRqhHlksAYojKKv0pV {
   margin: auto;
@@ -1590,7 +1593,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.jNSWZVvXw3pZSAmHDvkZ {
   font-size: 25px;
   text-align: justify;
   text-justify: inter-word;
-}`, "",{"version":3,"sources":["webpack://./src/components/About/About.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAA;EACA,qBAAA;AACJ;AAAI;EACI,aAAA;EACA,8BAAA;AAER;AAAI;EACI,mBAAA;AAER;AAAI;EACI,YAAA;EACA,qBAAA;AAER;AAAI;EACI,0BAAA;EACA,gBAAA;EACA,oBAAA;EACA,eAAA;EACA,mBAAA;EACA,wBAAA;AAER","sourcesContent":[".About{\n    margin-top: 25vmin;\n    margin-bottom: 25vmin;\n    .AboutFlex{\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n    }\n    .matcha{\n        margin-left: 20vmin;\n    }\n    .right{\n        margin: auto;\n        align-content: center;\n    }\n    .aboutparagraph{\n        font-family: 'Roboto Mono';\n        text-align: left;\n        margin-bottom: 5vmin;\n        font-size: 25px;\n        text-align: justify;\n        text-justify: inter-word;\n    }\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/components/About/About.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAA;EACA,qBAAA;AACJ;AAAI;EACI,aAAA;EACA,8BAAA;AAER;AAAI;EACI,mBAAA;EACA,cAAA;EACA,aAAA;AAER;AAAI;EACI,YAAA;EACA,qBAAA;AAER;AAAI;EACI,0BAAA;EACA,gBAAA;EACA,oBAAA;EACA,eAAA;EACA,mBAAA;EACA,wBAAA;AAER","sourcesContent":[".About{\n    margin-top: 25vmin;\n    margin-bottom: 25vmin;\n    .AboutFlex{\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n    }\n    .matcha{\n        margin-left: 20vmin;\n        height: 80vmin;\n        width: 60vmin;\n    }\n    .right{\n        margin: auto;\n        align-content: center;\n    }\n    .aboutparagraph{\n        font-family: 'Roboto Mono';\n        text-align: left;\n        margin-bottom: 5vmin;\n        font-size: 25px;\n        text-align: justify;\n        text-justify: inter-word;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"About": `jNSWZVvXw3pZSAmHDvkZ`,
@@ -2371,6 +2374,49 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.LwVTY1JcHIUak5SUHpgS {
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"main": `LwVTY1JcHIUak5SUHpgS`
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/pages/AuthPage/AuthPage.module.scss":
+/*!****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/pages/AuthPage/AuthPage.module.scss ***!
+  \****************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/sourceMaps.js */ "./node_modules/css-loader/dist/runtime/sourceMaps.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_sourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, `.RygkJgZmBHTETlLP3C3i {
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: var(--white);
+  border-radius: 2vmin;
+}
+
+.RygkJgZmBHTETlLP3C3i h3 {
+  margin-top: 4vmin;
+  text-align: center;
+  color: var(--text-light);
+  cursor: pointer;
+}`, "",{"version":3,"sources":["webpack://./src/pages/AuthPage/AuthPage.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,aAAA;EACA,6BAAA;EACA,mBAAA;EACA,8BAAA;EACA,oBAAA;AACJ;;AAEA;EACI,iBAAA;EACA,kBAAA;EACA,wBAAA;EACA,eAAA;AACJ","sourcesContent":[".AuthPage {\n    height: 100%;\n    display: flex;\n    justify-content: space-evenly;\n    align-items: center;\n    background-color: var(--white);\n    border-radius: 2vmin;\n}\n\n.AuthPage h3 {\n    margin-top: 4vmin;\n    text-align: center;\n    color: var(--text-light);\n    cursor: pointer;\n}"],"sourceRoot":""}]);
+// Exports
+___CSS_LOADER_EXPORT___.locals = {
+	"AuthPage": `RygkJgZmBHTETlLP3C3i`
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3518,6 +3564,60 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./src/pages/AuthPage/AuthPage.module.scss":
+/*!*************************************************!*\
+  !*** ./src/pages/AuthPage/AuthPage.module.scss ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleDomAPI.js */ "./node_modules/style-loader/dist/runtime/styleDomAPI.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertBySelector.js */ "./node_modules/style-loader/dist/runtime/insertBySelector.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */ "./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/insertStyleElement.js */ "./node_modules/style-loader/dist/runtime/insertStyleElement.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_AuthPage_module_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!../../../node_modules/sass-loader/dist/cjs.js!../../../node_modules/postcss-loader/dist/cjs.js!./AuthPage.module.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./src/pages/AuthPage/AuthPage.module.scss");
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+var options = {};
+
+options.styleTagTransform = (_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default());
+options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWithoutAttributes_js__WEBPACK_IMPORTED_MODULE_3___default());
+
+      options.insert = _node_modules_style_loader_dist_runtime_insertBySelector_js__WEBPACK_IMPORTED_MODULE_2___default().bind(null, "head");
+    
+options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
+options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_AuthPage_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+
+
+
+
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_AuthPage_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_AuthPage_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_2_use_1_node_modules_sass_loader_dist_cjs_js_node_modules_postcss_loader_dist_cjs_js_AuthPage_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+
+
+/***/ }),
+
 /***/ "./src/pages/NewOrderPage/NewOrderPage.module.scss":
 /*!*********************************************************!*\
   !*** ./src/pages/NewOrderPage/NewOrderPage.module.scss ***!
@@ -3848,4 +3948,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.5e3631caded35a32973f984bbf3db3bb.js.map
+//# sourceMappingURL=App.d5cf949f9ace3c32cfeccc26380d7be2.js.map

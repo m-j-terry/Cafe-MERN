@@ -6,7 +6,7 @@ export default function About() {
             <h1 className='title'>about</h1>
             <div className={styles.AboutFlex}>
                 <div>
-                <img className={styles.matcha} src="https://i.imgur.com/hCA2Jun.jpg" title="source: imgur.com"  height='450px' width='325px'/>
+                <img className={styles.matcha} src="https://i.imgur.com/DQznltT.jpg"/>
                 </div>
                 <div className={styles.right}>
                     <p className={styles.aboutparagraph}>hello.</p>

@@ -5,11 +5,10 @@ const { Item } = require('../../../models/item')
 export default function menu({ setOrder }) {
     async function startOrder(itemName){
         try {
-            // const foundItem = await Item.findOne({ name: itemName })
-            // send a get request to /api/items/:name
-            console.log(itemName)
-            const foundItem = await itemsAPI.getByName(itemName)
-            console.log('item = ' + foundItem)
+            // Pseudocode: send a get request to /api/items/name/:name
+
+            const foundItem = await itemsAPI.getByName(encodeURIComponent(itemName))
+
             if (foundItem._id) {
                 setOrder(foundItem._id)
                 // setOrder(itemName)

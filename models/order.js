@@ -15,7 +15,7 @@ lineItemSchema.virtual('extPrice').get(function() {
 })
 
 const orderSchema = new Schema({
-    user: { typew: Schema.Types.ObjectId, ref: 'User' },
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
     lineItems: [lineItemSchema],
     isPaid: { type: Boolean, default: false}
 }, {
@@ -38,7 +38,7 @@ orderSchema.virtual('orderId').get(function(){
 orderSchema.statics.getCart = function(userId) {
     return this.findOneAndUpdate(
         { user: userId, isPaid: false }, 
-        { user: userid },
+        { user: userId },
         { upsert: true, new: true }
     )
 }
