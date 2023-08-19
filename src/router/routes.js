@@ -1,6 +1,6 @@
 // import About from '../pages/About';
 // import Home from '../pages/Home';
-// import Contact from '../pages/Contact';
+// import Account from '../pages/Account';
 
 // const routes = [
 // 	{

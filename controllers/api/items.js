@@ -2,7 +2,8 @@ const Item = require('../../models/item')
 
 module.exports = {
     index, 
-    show
+    show,
+    findByName
 }
 
 async function index(req, res) {
@@ -22,4 +23,18 @@ async function show(req, res) {
     } catch (error) {
         res.status(400).json({ msg: error.msg })
     }
+}
+
+async function findByName(req, res) {
+    try{ 
+        console.log('controller')
+        console.log(req.params)
+        const foundItem = await Item.findOne({ name: req.params }).exec()
+        res.status(200).json(foundItem)
+
+    } catch(error) {
+        res.status(400).json({ msg: error.msg })
+
+    }
+
 }

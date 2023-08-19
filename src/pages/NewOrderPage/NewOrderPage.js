@@ -17,14 +17,14 @@ export default function NewOrderPage({ user, setUser, order }) {
 
     useEffect(function() {
         async function getItems() {
-        const items = await itemsAPI.getAll() 
-        categoriesRef.current = items.reduce((cats, item) => {
-            const cat = item.category.name 
-            return cats.includes(cat) ? cats : [...cats, cat] 
-        }, []) 
-        setMenuItems(items) 
-        setActiveCat(categoriesRef.current[0]) 
-        console.log('menu = ' + items)
+            const items = await itemsAPI.getAll() 
+            categoriesRef.current = items.reduce((cats, item) => {
+                const cat = item.category.name 
+                return cats.includes(cat) ? cats : [...cats, cat] 
+            }, []) 
+            setMenuItems(items) 
+            setActiveCat(categoriesRef.current[0]) 
+            console.log('menu = ' + items)
         }
         getItems() 
         async function getCart() {

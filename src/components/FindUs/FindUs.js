@@ -1,4 +1,5 @@
 import styles from './FindUs.module.scss'
+// require('dotenv').config()
 export default function FindUs() {
 // Initialize and add the map
     // let map;
@@ -27,10 +28,34 @@ export default function FindUs() {
     // }
     // initMap();
     
+// "use strict";
+// async function requestApi() {
+//     await fetch(`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_APIKEY}&callback=initMap`) 
+// }
+// requestApi()
+// function initMap() {
+//     const myLatLng = {
+//         lat: 40.661041259765625,
+//         lng: -73.9532699584961
+//     };
+//     const map = new google.maps.Map(document.getElementById("gmp-map"), {
+//         zoom: 14,
+//         center: myLatLng,
+//         fullscreenControl: false,
+//         zoomControl: true,
+//         streetViewControl: false
+//     });
+//     new google.maps.Marker({
+//         position: myLatLng,
+//         map,
+//         title: "My location"
+//     });
+// }
+
     return(
         <div className={styles.FindUs}>
             <h1 className='title'>find us</h1>
-            <div className='map'></div>
+            <div className='map' id='gmp-map'></div>
             <h2 className='title'>location and hours</h2>
             <div className={styles.flexbox}>
                 <div className={styles.left}>

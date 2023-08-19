@@ -1,17 +1,24 @@
 import styles from './menu.module.scss'
-
+import * as itemsAPI from'../../utilities/items-api'
 const { Item } = require('../../../models/item')
 
 export default function menu({ setOrder }) {
     async function startOrder(itemName){
-        console.log(Item)
-        const foundItem = await Item.findOne({ name: itemName })
-        console.log('item = ' + foundItem)
-        if (foundItem._id) {
-            setOrder(foundItem._id)
-        } else {
-            console.log('item not found')
-            return null
+        try {
+            // const foundItem = await Item.findOne({ name: itemName })
+            // send a get request to /api/items/:name
+            console.log(itemName)
+            const foundItem = await itemsAPI.getByName(itemName)
+            console.log('item = ' + foundItem)
+            if (foundItem._id) {
+                setOrder(foundItem._id)
+                // setOrder(itemName)
+            } else {
+                console.log('item not found')
+                return null
+            }
+        } catch(error) {
+            console.log(`error = ${error}`)
         }
     }
     return(

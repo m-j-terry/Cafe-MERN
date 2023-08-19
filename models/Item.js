@@ -12,11 +12,11 @@ const itemSchema = new Schema({
     timestamps: true
 })
 
-// const Item = mongoose.model('Item', itemSchema)
+const Item = mongoose.model('Item', itemSchema)
 
 
 // module.exports = mongoose.model('Item', itemSchema)
 module.exports = {
     itemSchema,
-    Item: model('Item', itemSchema)
+    Item: Item
 }

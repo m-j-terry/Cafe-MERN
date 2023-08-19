@@ -1,4 +1,4 @@
-// import styles from './MenuList.module.scss' 
+import styles from './MenuList.module.scss' 
 import MenuListItem from '../MenuListItem/MenuListItem' 
 
 export default function MenuList({ menuItems, handleAddToOrder }) {
