@@ -8,7 +8,7 @@ import CategoryList from '../../components/CategoryList/CategoryList'
 import OrderDetail from '../../components/OrderDetail/OrderDetail' 
 import UserLogOut from '../../components/UserLogOut/UserLogOut' 
 
-export default function NewOrderPage({ user, setUser, order }) {
+export default function NewOrderPage({ user, setUser, orderItem }) {
     const [menuItems, setMenuItems] = useState([]) 
     const [activeCat, setActiveCat] = useState('') 
     const [cart, setCart] = useState(null) 
@@ -32,19 +32,20 @@ export default function NewOrderPage({ user, setUser, order }) {
         setCart(cart) 
         }
         getCart() 
-        handleAddToOrder(order)
+        console.log(orderItem)
+        handleAddToOrder(orderItem)
         console.log('cart = ' + cart)
     }, []) 
 
     /*--- event handlers ---*/
     async function handleAddToOrder(itemId) {
-        const updatedCart = await ordersAPI.addItemToCart(itemId) 
-        setCart(updatedCart) 
+        const updatedCart = await ordersAPI.addItemToCart(itemId)
+        setCart(updatedCart)
     }
 
     async function handleChangeQty(itemId, newQty) {
-        const updatedCart = await ordersAPI.setItemQtyInCart(itemId, newQty) 
-        setCart(updatedCart) 
+        const updatedCart = await ordersAPI.setItemQtyInCart(itemId, newQty)
+        setCart(updatedCart)
     }
 
     async function handleCheckout() {

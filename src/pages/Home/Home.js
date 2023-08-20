@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Hamlet from '../../components/Hamlet/Hamlet'
 import About from '../../components/About/About'
 import Menu from '../../components/Menu/Menu'
@@ -6,8 +5,8 @@ import FindUs from '../../components/FindUs/FindUs'
 import ContactUs from '../../components/ContactUs/ContactUs'
 
 export default function Home({
-    order,
-    setOrder
+    orderItem,
+    setOrderItem
 }) {
     return(
         <div className='Hamlet' id='Home'>
@@ -17,8 +16,7 @@ export default function Home({
             </div>
             <div className='Menu' id='Menu'>
                 <Menu 
-                    order={order}
-                    setOrder={setOrder}
+                    setOrderItem={setOrderItem}
                 />
             </div>
             <div className='FindUs' id='FindUs'>

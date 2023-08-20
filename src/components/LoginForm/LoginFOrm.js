@@ -21,9 +21,10 @@ async function handleSubmit(evt) {
         // will resolve to the user object included in the
         // payload of the JSON Web Token (JWT)
         const user = await usersService.login(credentials) 
+        console.log(user)
         setUser(user) 
     } catch {
-        setError('Log In Failed - Try Again') 
+        setError('Log In Failed - Try Again')
     }
 }
 
@@ -38,7 +39,7 @@ async function handleSubmit(evt) {
             <button type="submit">LOG IN</button>
             </form>
         </div>
-        <p className="error-message">&nbsp {error}</p>
+        <p className="error-message">{error}</p>
     </div>
     ) 
 }

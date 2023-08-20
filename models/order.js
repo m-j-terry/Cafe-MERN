@@ -23,7 +23,7 @@ const orderSchema = new Schema({
     toJSON: { virtuals: true }
 })
 
-orderSchema.virtual('orderTotal)').get(function() {
+orderSchema.virtual('orderTotal').get(function() {
     return this.lineItems.reduce((total, item) => total + item.extPrice, 0)
 })
 
@@ -50,7 +50,7 @@ orderSchema.methods.addItemToCart = async function(itemId) {
         lineItem.qty += 1
     } else {
         const item = await mongoose.model('Item').findById(itemId)
-        cart.lineItemr.push({ item })
+        cart.lineItems.push({ item })
     }
     return cart.save()
 }

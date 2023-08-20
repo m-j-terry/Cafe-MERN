@@ -3,7 +3,7 @@ import styles from './LineItem.module.scss'
 export default function LineItem({ lineItem, isPaid, handleChangeQty }) {
 return (
 <div className={styles.LineItem}>
-    <div className="flex-ctr-ctr">{lineItem.item.imageUrl}</div>
+    <div className="flex-ctr-ctr"><img src={lineItem.item.imageUrl} height={lineItem.item.name === 'Tea' || lineItem.item.name === 'Drip-Small' || lineItem.item.name === 'Drip-Medium' || lineItem.item.name === 'Drip-Large' ? '35px' : '65px'}/></div>
     <div className="flex-ctr-ctr flex-col">
     <span className="align-ctr">{lineItem.item.name}</span>
     <span>{lineItem.item.price.toFixed(2)}</span>
@@ -12,14 +12,14 @@ return (
     {!isPaid &&
         <button
         className="btn-xs"
-        onClick={() => handleChangeQty(lineItem.item._id, lineItem.qty - 1)}
+        onClick={() => handleChangeQty(lineItem.item._id, lineItem.item.qty - 1)}
         >−</button>
     }
     <span>{lineItem.qty}</span>
     {!isPaid &&
         <button
         className="btn-xs"
-        onClick={() => handleChangeQty(lineItem.item._id, lineItem.qty + 1)}
+        onClick={() => handleChangeQty(lineItem.item._id, lineItem.item.qty + 1)}
         >+</button>
     }
     </div>

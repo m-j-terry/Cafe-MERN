@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import styles from './App.module.scss';
 import { getUser } from '../../utilities/users-service';
@@ -11,19 +11,23 @@ import Home from '../Home/Home'
 export default function App() {
     const [user, setUser] = useState(getUser())
     const [order, setOrder] = useState([])
+    const [orderItem, setOrderItem] = useState([])
+    useEffect(function() {
+        localStorage.clear()
+    }, [])
     return (
         <main>
             <div>
                 <NavBar />
             </div>
-            { order.length === 0 ? 
+            { orderItem.length === 0 ? 
                 <Home 
-                    order={order}
-                    setOrder={setOrder}
+                    orderItem={orderItem}
+                    setOrderItem={setOrderItem}
                 />
                 : 
                 user ? 
-                    <NewOrderPage order={order} />
+                    <NewOrderPage orderItem={orderItem} />
                     :
                     <AuthPage setUser={setUser} />
             }
