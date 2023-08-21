@@ -3,7 +3,7 @@ import styles from './About.module.scss'
 export default function About() {
     return(
         <div className={styles.About}>
-            <h1 className='title'>about</h1>
+            <h1 className='title' id='about'>about</h1>
             <div className={styles.AboutFlex}>
                 <div>
                 <img className={styles.matcha} src="https://i.imgur.com/DQznltT.jpg"/>

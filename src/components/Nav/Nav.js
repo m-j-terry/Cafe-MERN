@@ -1,21 +1,29 @@
 import { Link } from 'react-router-dom'
 import styles from './Nav.module.scss'
-import { useState } from 'react'
-import Hamlet from '../../components/Hamlet/Hamlet'
-import About from '../../components/About/About'
-import Menu from '../../components/Menu/Menu'
-import FindUs from '../../components/FindUs/FindUs'
-import ContactUs from '../../components/ContactUs/ContactUs'
 
-const NavBar = (props) => {
+
+const NavBar = ({ setOrderItem, setAccount }) => {
+    function click1(){
+        setOrderItem([])
+        setAccount(false)
+    }
+    function click2(){
+        setOrderItem([1])
+        setAccount(false)
+    }
+    function click3(){
+        setOrderItem([])
+        setAccount(true)
+    }
+    
     return(
         <nav className={styles.NavBar}>
-            <button as="a" href='#Home'>home</button>
-            <button as="a" href='#About'>about</button>
-            <button as="a" href='#Menu'>menu</button>
-            <button as="a" href='#FindUs'>find us</button>
-            <button as="a" href='#ContactUs'>contact us</button> 
-            <button>account</button>
+            <button onClick={() => click1()}><a href='#home'>home</a></button>
+            <button onClick={() => click1()}><a href='#about'>about</a></button>
+            <button onClick={() => click2()}>menu</button>
+            <button onClick={() => click1()}><a href='#findUs'>find us</a></button>
+            <button onClick={() => click1()}><a href='#contactUs'>contact us</a></button> 
+            <button onClick={() => click3()}>account</button>
         </nav>
     )
 }

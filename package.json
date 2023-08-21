@@ -59,6 +59,7 @@
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.4.0",
     "morgan": "^1.10.0",
+    "react-google-maps": "^9.4.5",
     "serve-favicon": "^2.5.0"
   }
 }

@@ -83,7 +83,8 @@ function About() {
   return /*#__PURE__*/React.createElement("div", {
     className: _About_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].About
   }, /*#__PURE__*/React.createElement("h1", {
-    className: "title"
+    className: "title",
+    id: "about"
   }, "about"), /*#__PURE__*/React.createElement("div", {
     className: _About_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].AboutFlex
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
@@ -152,7 +153,8 @@ function ContactUs() {
   return /*#__PURE__*/React.createElement("div", {
     className: _ContactUs_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].ContactUs
   }, /*#__PURE__*/React.createElement("h1", {
-    className: "title"
+    className: "title",
+    id: "contactUs"
   }, "contact us"), /*#__PURE__*/React.createElement("div", {
     className: _ContactUs_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].icons
   }, /*#__PURE__*/React.createElement("img", {
@@ -181,69 +183,17 @@ function ContactUs() {
 /* harmony export */   "default": () => (/* binding */ FindUs)
 /* harmony export */ });
 /* harmony import */ var _FindUs_module_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FindUs.module.scss */ "./src/components/FindUs/FindUs.module.scss");
+/* harmony import */ var _Map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Map */ "./src/components/FindUs/Map.js");
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
-// require('dotenv').config()
+
 function FindUs() {
-  // Initialize and add the map
-  // let map;
-
-  // async function initMap() {
-  //     // The location of Uluru
-  //     const position = { lat: 40.6630459, lng: -73.9542193 };
-  //     // Request needed libraries.
-  //     //@ts-ignore
-  //     const { Map } = await google.maps.importLibrary("maps");
-  //     const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-
-  //     // The map, centered at 465 Rogers Ave
-  //     map = new Map(document.getElementById("map"), {
-  //         zoom: 4,
-  //         center: position,
-  //         mapId: "DEMO_MAP_ID",
-  //     });
-
-  //     // The marker, positioned at 465 Rogers Ave
-  //     const marker = new AdvancedMarkerElement({
-  //         map: map,
-  //         position: position,
-  //         title: "hamlet coffee co",
-  //     });
-  // }
-  // initMap();
-
-  // "use strict";
-  // async function requestApi() {
-  //     await fetch(`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_APIKEY}&callback=initMap`) 
-  // }
-  // requestApi()
-  // function initMap() {
-  //     const myLatLng = {
-  //         lat: 40.661041259765625,
-  //         lng: -73.9532699584961
-  //     };
-  //     const map = new google.maps.Map(document.getElementById("gmp-map"), {
-  //         zoom: 14,
-  //         center: myLatLng,
-  //         fullscreenControl: false,
-  //         zoomControl: true,
-  //         streetViewControl: false
-  //     });
-  //     new google.maps.Marker({
-  //         position: myLatLng,
-  //         map,
-  //         title: "My location"
-  //     });
-  // }
-
   return /*#__PURE__*/React.createElement("div", {
     className: _FindUs_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].FindUs
   }, /*#__PURE__*/React.createElement("h1", {
-    className: "title"
-  }, "find us"), /*#__PURE__*/React.createElement("div", {
-    className: "map",
-    id: "gmp-map"
-  }), /*#__PURE__*/React.createElement("h2", {
+    className: "title",
+    id: "findUs"
+  }, "find us"), /*#__PURE__*/React.createElement("div", null), /*#__PURE__*/React.createElement("h2", {
     className: "title"
   }, "location and hours"), /*#__PURE__*/React.createElement("div", {
     className: _FindUs_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].flexbox
@@ -275,6 +225,41 @@ function FindUs() {
 
 /***/ }),
 
+/***/ "./src/components/FindUs/Map.js":
+/*!**************************************!*\
+  !*** ./src/components/FindUs/Map.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* unused harmony export default */
+/* harmony import */ var _FindUs_module_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FindUs.module.scss */ "./src/components/FindUs/FindUs.module.scss");
+/* harmony import */ var react_google_maps__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-google-maps */ "./node_modules/react-google-maps/lib/index.js");
+
+
+const center = {
+  lat: 40.6630459,
+  lng: -73.9542193
+};
+function Map() {
+  // return (
+  //     <div>
+  //         <header src="https://maps.googleapis.com/maps/api/js?key={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}"></header>
+  //         <GoogleMap 
+  //             Zoom={10} 
+  //             center={center} 
+  //             className='map' 
+  //         >
+  //             <Marker 
+  //                 position={center}
+  //             />
+  //         </GoogleMap>
+  //     </div>
+  // )
+}
+
+/***/ }),
+
 /***/ "./src/components/Hamlet/Hamlet.js":
 /*!*****************************************!*\
   !*** ./src/components/Hamlet/Hamlet.js ***!
@@ -291,7 +276,9 @@ function FindUs() {
 function Hamlet() {
   return /*#__PURE__*/React.createElement("div", {
     className: _Hamlet_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].hamlet
-  }, /*#__PURE__*/React.createElement("h1", {
+  }, /*#__PURE__*/React.createElement("a", {
+    id: "home"
+  }), /*#__PURE__*/React.createElement("h1", {
     className: "title"
   }, "hamlet"), /*#__PURE__*/React.createElement("img", {
     className: _Hamlet_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].hamletImg,
@@ -785,41 +772,49 @@ function MenuListItem(_ref) {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Nav_module_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Nav.module.scss */ "./src/components/Nav/Nav.module.scss");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_Hamlet_Hamlet__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Hamlet/Hamlet */ "./src/components/Hamlet/Hamlet.js");
-/* harmony import */ var _components_About_About__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/About/About */ "./src/components/About/About.js");
-/* harmony import */ var _components_Menu_Menu__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Menu/Menu */ "./src/components/Menu/Menu.js");
-/* harmony import */ var _components_FindUs_FindUs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/FindUs/FindUs */ "./src/components/FindUs/FindUs.js");
-/* harmony import */ var _components_ContactUs_ContactUs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/ContactUs/ContactUs */ "./src/components/ContactUs/ContactUs.js");
 /* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 
-
-
-
-
-
-
-const NavBar = props => {
+const NavBar = _ref => {
+  let {
+    setOrderItem,
+    setAccount
+  } = _ref;
+  function click1() {
+    setOrderItem([]);
+    setAccount(false);
+  }
+  function click2() {
+    setOrderItem([1]);
+    setAccount(false);
+  }
+  function click3() {
+    setOrderItem([]);
+    setAccount(true);
+  }
   return /*#__PURE__*/React.createElement("nav", {
     className: _Nav_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].NavBar
   }, /*#__PURE__*/React.createElement("button", {
-    as: "a",
-    href: "#Home"
-  }, "home"), /*#__PURE__*/React.createElement("button", {
-    as: "a",
-    href: "#About"
-  }, "about"), /*#__PURE__*/React.createElement("button", {
-    as: "a",
-    href: "#Menu"
+    onClick: () => click1()
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#home"
+  }, "home")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => click1()
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#about"
+  }, "about")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => click2()
   }, "menu"), /*#__PURE__*/React.createElement("button", {
-    as: "a",
-    href: "#FindUs"
-  }, "find us"), /*#__PURE__*/React.createElement("button", {
-    as: "a",
-    href: "#ContactUs"
-  }, "contact us"), /*#__PURE__*/React.createElement("button", null, "account"));
+    onClick: () => click1()
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#findUs"
+  }, "find us")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => click1()
+  }, /*#__PURE__*/React.createElement("a", {
+    href: "#contactUs"
+  }, "contact us")), /*#__PURE__*/React.createElement("button", {
+    onClick: () => click3()
+  }, "account"));
 };
 
 // import { Link } from 'react-router-dom';
@@ -1130,6 +1125,30 @@ root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createEle
 
 /***/ }),
 
+/***/ "./src/pages/Account/Account.js":
+/*!**************************************!*\
+  !*** ./src/pages/Account/Account.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* export default binding */ __WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _components_UserLogOut_UserLogOut__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/UserLogOut/UserLogOut */ "./src/components/UserLogOut/UserLogOut.js");
+/* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+/* harmony default export */ function __WEBPACK_DEFAULT_EXPORT__() {
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("h1", {
+    className: "title"
+  }, "Account"), /*#__PURE__*/React.createElement(_components_UserLogOut_UserLogOut__WEBPACK_IMPORTED_MODULE_0__["default"], {
+    user: user,
+    setUser: setUser
+  }));
+}
+
+/***/ }),
+
 /***/ "./src/pages/App/App.js":
 /*!******************************!*\
   !*** ./src/pages/App/App.js ***!
@@ -1143,12 +1162,14 @@ root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createEle
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _App_module_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.module.scss */ "./src/pages/App/App.module.scss");
-/* harmony import */ var _utilities_users_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utilities/users-service */ "./src/utilities/users-service.js");
+/* harmony import */ var _utilities_users_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utilities/users-service */ "./src/utilities/users-service.js");
 /* harmony import */ var _AuthPage_AuthPage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../AuthPage/AuthPage */ "./src/pages/AuthPage/AuthPage.js");
 /* harmony import */ var _NewOrderPage_NewOrderPage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../NewOrderPage/NewOrderPage */ "./src/pages/NewOrderPage/NewOrderPage.js");
 /* harmony import */ var _OrderHistoryPage_OrderHistoryPage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../OrderHistoryPage/OrderHistoryPage */ "./src/pages/OrderHistoryPage/OrderHistoryPage.js");
 /* harmony import */ var _components_Nav_Nav__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Nav/Nav */ "./src/components/Nav/Nav.js");
 /* harmony import */ var _Home_Home__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Home/Home */ "./src/pages/Home/Home.js");
+/* harmony import */ var _Account_Account__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Account/Account */ "./src/pages/Account/Account.js");
+
 
 
 
@@ -1159,14 +1180,24 @@ root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1___default().createEle
 
 
 function App() {
-  const [user, setUser] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((0,_utilities_users_service__WEBPACK_IMPORTED_MODULE_7__.getUser)());
+  const [user, setUser] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((0,_utilities_users_service__WEBPACK_IMPORTED_MODULE_8__.getUser)());
   const [order, setOrder] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [orderItem, setOrderItem] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [checkout, setCheckout] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
+  const [account, setAccount] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     localStorage.clear();
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Nav_Nav__WEBPACK_IMPORTED_MODULE_5__["default"], null)), orderItem.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Home_Home__WEBPACK_IMPORTED_MODULE_6__["default"], {
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log(account);
+  }, [account]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log(user);
+  }, [user]);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Nav_Nav__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    setOrderItem: setOrderItem,
+    setAccount: setAccount
+  })), account === true ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Account_Account__WEBPACK_IMPORTED_MODULE_7__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AuthPage_AuthPage__WEBPACK_IMPORTED_MODULE_2__["default"], null)) : orderItem.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Home_Home__WEBPACK_IMPORTED_MODULE_6__["default"], {
     orderItem: orderItem,
     setOrderItem: setOrderItem
   }) : user ? checkout === false ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NewOrderPage_NewOrderPage__WEBPACK_IMPORTED_MODULE_3__["default"], {
@@ -1680,8 +1711,8 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.jNSWZVvXw3pZSAmHDvkZ {
 }
 .jNSWZVvXw3pZSAmHDvkZ .xC7DtFSni0cOvFh08HoZ {
   margin-left: 20vmin;
-  height: 80vmin;
-  width: 60vmin;
+  height: 75vmin;
+  width: 55vmin;
 }
 .jNSWZVvXw3pZSAmHDvkZ .qXTRqhHlksAYojKKv0pV {
   margin: auto;
@@ -1694,7 +1725,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.jNSWZVvXw3pZSAmHDvkZ {
   font-size: 25px;
   text-align: justify;
   text-justify: inter-word;
-}`, "",{"version":3,"sources":["webpack://./src/components/About/About.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAA;EACA,qBAAA;AACJ;AAAI;EACI,aAAA;EACA,8BAAA;AAER;AAAI;EACI,mBAAA;EACA,cAAA;EACA,aAAA;AAER;AAAI;EACI,YAAA;EACA,qBAAA;AAER;AAAI;EACI,0BAAA;EACA,gBAAA;EACA,oBAAA;EACA,eAAA;EACA,mBAAA;EACA,wBAAA;AAER","sourcesContent":[".About{\n    margin-top: 25vmin;\n    margin-bottom: 25vmin;\n    .AboutFlex{\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n    }\n    .matcha{\n        margin-left: 20vmin;\n        height: 80vmin;\n        width: 60vmin;\n    }\n    .right{\n        margin: auto;\n        align-content: center;\n    }\n    .aboutparagraph{\n        font-family: 'Roboto Mono';\n        text-align: left;\n        margin-bottom: 5vmin;\n        font-size: 25px;\n        text-align: justify;\n        text-justify: inter-word;\n    }\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/components/About/About.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAA;EACA,qBAAA;AACJ;AAAI;EACI,aAAA;EACA,8BAAA;AAER;AAAI;EACI,mBAAA;EACA,cAAA;EACA,aAAA;AAER;AAAI;EACI,YAAA;EACA,qBAAA;AAER;AAAI;EACI,0BAAA;EACA,gBAAA;EACA,oBAAA;EACA,eAAA;EACA,mBAAA;EACA,wBAAA;AAER","sourcesContent":[".About{\n    margin-top: 25vmin;\n    margin-bottom: 25vmin;\n    .AboutFlex{\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n    }\n    .matcha{\n        margin-left: 20vmin;\n        height: 75vmin;\n        width: 55vmin;\n    }\n    .right{\n        margin: auto;\n        align-content: center;\n    }\n    .aboutparagraph{\n        font-family: 'Roboto Mono';\n        text-align: left;\n        margin-bottom: 5vmin;\n        font-size: 25px;\n        text-align: justify;\n        text-justify: inter-word;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"About": `jNSWZVvXw3pZSAmHDvkZ`,
@@ -1838,13 +1869,18 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.o1RAIYRTjCGjM0JNiKDA {
 }
 .o1RAIYRTjCGjM0JNiKDA .vRt8EhvrZ4lvymEi160n {
   font-family: "Roboto Mono";
-}`, "",{"version":3,"sources":["webpack://./src/components/FindUs/FindUs.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAA;AACJ;AAAI;EACI,aAAA;EACA,iCAAA;EACA,mBAAA;AAER;AAAI;EACI,mBAAA;AAER;AACI;EACI,0BAAA;AACR","sourcesContent":[".FindUs{\n    margin-top: 25vmin;\n    .flexbox{\n        display: grid;\n        grid-template-columns: 59% 1% 20%;\n        align-items: center;\n    }\n    .left{ \n        align-items: center;\n    }\n\n    .par{\n        font-family: 'Roboto Mono';\n    }\n}"],"sourceRoot":""}]);
+}
+
+.gBzIhFN5shNbCQOY9sn1 {
+  height: 80vmin;
+}`, "",{"version":3,"sources":["webpack://./src/components/FindUs/FindUs.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAA;AACJ;AAAI;EACI,aAAA;EACA,iCAAA;EACA,mBAAA;AAER;AAAI;EACI,mBAAA;AAER;AACI;EACI,0BAAA;AACR;;AAGA;EACI,cAAA;AAAJ","sourcesContent":[".FindUs{\n    margin-top: 25vmin;\n    .flexbox{\n        display: grid;\n        grid-template-columns: 59% 1% 20%;\n        align-items: center;\n    }\n    .left{ \n        align-items: center;\n    }\n\n    .par{\n        font-family: 'Roboto Mono';\n    }\n}\n\n.map{\n    height: 80vmin;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"FindUs": `o1RAIYRTjCGjM0JNiKDA`,
 	"flexbox": `tIQvFZW_ypcXtIA3KdhP`,
 	"left": `ug8cT6SYuaqe_us73mxg`,
-	"par": `vRt8EhvrZ4lvymEi160n`
+	"par": `vRt8EhvrZ4lvymEi160n`,
+	"map": `gBzIhFN5shNbCQOY9sn1`
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1878,11 +1914,18 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.hFVQ3IWpeLmlSsXn_nO4 {
   display: block;
   margin-left: auto;
   margin-right: auto;
-}`, "",{"version":3,"sources":["webpack://./src/components/Hamlet/Hamlet.module.scss"],"names":[],"mappings":"AAAA;EACI,eAAA;AACJ;;AACA;EACI,cAAA;EACA,iBAAA;EACA,kBAAA;AAEJ","sourcesContent":[".hamlet{ \n    padding: 20vmin;\n}\n.hamletImg{\n    display: block;\n    margin-left: auto;\n    margin-right: auto;\n}"],"sourceRoot":""}]);
+}
+
+a#UfolLx6O9fYrckNw33OV {
+  display: block;
+  position: relative;
+  top: -250px;
+}`, "",{"version":3,"sources":["webpack://./src/components/Hamlet/Hamlet.module.scss"],"names":[],"mappings":"AAAA;EACI,eAAA;AACJ;;AACA;EACI,cAAA;EACA,iBAAA;EACA,kBAAA;AAEJ;;AACA;EACI,cAAA;EACA,kBAAA;EACA,WAAA;AAEJ","sourcesContent":[".hamlet{ \n    padding: 20vmin;\n}\n.hamletImg{\n    display: block;\n    margin-left: auto;\n    margin-right: auto;\n}\n\na#home {\n    display:block;\n    position:relative;\n    top:-250px;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"hamlet": `hFVQ3IWpeLmlSsXn_nO4`,
-	"hamletImg": `twhxPktVWvJXzlhqqukS`
+	"hamletImg": `twhxPktVWvJXzlhqqukS`,
+	"home": `UfolLx6O9fYrckNw33OV`
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2028,13 +2071,13 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.lUd1frsOre1w1g3vCNqI {
 }
 .lUd1frsOre1w1g3vCNqI .AoxJC041Ear25NTbokxg {
   display: grid;
-  grid-template-rows: 75px 75px 75px 75px 75px;
+  grid-template-rows: 75px 75px;
   grid-template-columns: 100px 100px 100px 100px;
   margin-left: 40vmin;
 }
 .lUd1frsOre1w1g3vCNqI .oA8abeTUv4Ytl4KKFRMI {
   display: grid;
-  grid-template-rows: 75px 75px 75px 75px 75px;
+  grid-template-rows: 75px 75px;
   grid-template-columns: 100px 100px 100px 100px;
 }
 .lUd1frsOre1w1g3vCNqI .v66h70hR3dR3GwrXD6cy {
@@ -2066,7 +2109,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.lUd1frsOre1w1g3vCNqI {
   border-radius: 3%;
   margin-top: 10px;
   font-family: "Roboto Mono";
-}`, "",{"version":3,"sources":["webpack://./src/components/Menu/menu.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAA;AACJ;AAAI;EACI,YAAA;EACA,aAAA;AAER;AAAI;EACI,aAAA;EACA,2DAAA;EACA,kCAAA;EACA,mBAAA;AAER;AAAI;EACI,aAAA;EACA,4CAAA;EACA,kCAAA;AAER;AAAI;EACI,aAAA;EACA,4CAAA;EACA,8CAAA;EACA,mBAAA;AAER;AAAI;EACI,aAAA;EACA,4CAAA;EACA,8CAAA;AAER;AAAI;EACI,aAAA;EACA,oCAAA;AAER;AAAI;EACI,0BAAA;AAER;AAAI;EACI,mBAAA;AAER;AAAI;EACI,0BAAA;EACA,eAAA;AAER;AAAI;EACI,eAAA;AAER;AAAI;EACI,aAAA;EACA,uBAAA;EACA,YAAA;EACA,gBAAA;EACA,YAAA;EACA,YAAA;EACA,qBAAA;EACK,gBAAA;EACL,iBAAA;EACA,gBAAA;EACA,0BAAA;AAER","sourcesContent":[".Menu{\n    text-align: center;\n    p{ \n        margin: auto;\n        padding:10px;\n    }\n    .right {\n        display: grid;\n        grid-template-rows: 75px 75px 75px 75px 75px 75px 75px 75px;\n        grid-template-columns: 150px 150px;\n        margin-left: 40vmin; \n    }\n    .left {\n        display: grid;\n        grid-template-rows: 75px 75px 75px 75px 75px;\n        grid-template-columns: 150px 150px; \n    }\n    .right2 { \n        display: grid;\n        grid-template-rows: 75px 75px 75px 75px 75px;\n        grid-template-columns: 100px 100px 100px 100px; \n        margin-left: 40vmin;\n    }\n    .left2 { \n        display: grid;\n        grid-template-rows: 75px 75px 75px 75px 75px;\n        grid-template-columns: 100px 100px 100px 100px; \n    }\n    .menuFull {\n        display: grid;\n        grid-template-columns: 1fr .1fr 1fr;\n    }  \n    .item {\n        font-family: 'Roboto Mono'\n    }\n    #byTheBag{\n        margin-top: -15vmin;\n    }\n    .origin {\n        font-family: 'Roboto Mono';\n        font-size: 12px;\n    } \n    button:hover {\n        cursor: pointer;\n    }\n    button .order {\n        border: black;\n        background-color: white;\n        color: black;\n        font-size: 2vmin;\n        height: 25px;\n        width: 135px;\n        -moz-column-gap: 10px;\n             column-gap: 10px;\n        border-radius: 3%;\n        margin-top: 10px;\n        font-family: 'Roboto Mono';\n    }  \n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/components/Menu/menu.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAA;AACJ;AAAI;EACI,YAAA;EACA,aAAA;AAER;AAAI;EACI,aAAA;EACA,2DAAA;EACA,kCAAA;EACA,mBAAA;AAER;AAAI;EACI,aAAA;EACA,4CAAA;EACA,kCAAA;AAER;AAAI;EACI,aAAA;EACA,6BAAA;EACA,8CAAA;EACA,mBAAA;AAER;AAAI;EACI,aAAA;EACA,6BAAA;EACA,8CAAA;AAER;AAAI;EACI,aAAA;EACA,oCAAA;AAER;AAAI;EACI,0BAAA;AAER;AAAI;EACI,mBAAA;AAER;AAAI;EACI,0BAAA;EACA,eAAA;AAER;AAAI;EACI,eAAA;AAER;AAAI;EACI,aAAA;EACA,uBAAA;EACA,YAAA;EACA,gBAAA;EACA,YAAA;EACA,YAAA;EACA,qBAAA;EACK,gBAAA;EACL,iBAAA;EACA,gBAAA;EACA,0BAAA;AAER","sourcesContent":[".Menu{\n    text-align: center;\n    p{ \n        margin: auto;\n        padding:10px;\n    }\n    .right {\n        display: grid;\n        grid-template-rows: 75px 75px 75px 75px 75px 75px 75px 75px;\n        grid-template-columns: 150px 150px;\n        margin-left: 40vmin; \n    }\n    .left {\n        display: grid;\n        grid-template-rows: 75px 75px 75px 75px 75px;\n        grid-template-columns: 150px 150px; \n    }\n    .right2 { \n        display: grid;\n        grid-template-rows: 75px 75px;\n        grid-template-columns: 100px 100px 100px 100px; \n        margin-left: 40vmin;\n    }\n    .left2 { \n        display: grid;\n        grid-template-rows: 75px 75px;\n        grid-template-columns: 100px 100px 100px 100px; \n    }\n    .menuFull {\n        display: grid;\n        grid-template-columns: 1fr .1fr 1fr;\n    }  \n    .item {\n        font-family: 'Roboto Mono'\n    }\n    #byTheBag{\n        margin-top: -15vmin;\n    }\n    .origin {\n        font-family: 'Roboto Mono';\n        font-size: 12px;\n    } \n    button:hover {\n        cursor: pointer;\n    }\n    button .order {\n        border: black;\n        background-color: white;\n        color: black;\n        font-size: 2vmin;\n        height: 25px;\n        width: 135px;\n        -moz-column-gap: 10px;\n             column-gap: 10px;\n        border-radius: 3%;\n        margin-top: 10px;\n        font-family: 'Roboto Mono';\n    }  \n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"Menu": `lUd1frsOre1w1g3vCNqI`,
@@ -2209,6 +2252,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `._80BzjHmA6SFgaAg17ZUv {
   overflow: hidden;
   position: fixed;
   top: 0;
+  left: 0;
 }
 ._80BzjHmA6SFgaAg17ZUv button {
   border: none;
@@ -2216,11 +2260,24 @@ ___CSS_LOADER_EXPORT___.push([module.id, `._80BzjHmA6SFgaAg17ZUv {
   font-size: 3vmin;
   color: black;
   font-family: "Roboto Mono";
+  font-size: 3vmin;
 }
 ._80BzjHmA6SFgaAg17ZUv button:link, ._80BzjHmA6SFgaAg17ZUv button:visited {
   color: rgb(25, 97, 252);
   text-decoration: none;
-}`, "",{"version":3,"sources":["webpack://./src/components/Nav/Nav.module.scss"],"names":[],"mappings":"AAAA;EACI,uBAAA;EACA,aAAA;EACA,YAAA;EACA,8CAAA;EACA,gBAAA;EACA,eAAA;EACA,MAAA;AACJ;AAAI;EACI,YAAA;EACA,6BAAA;EACA,gBAAA;EACA,YAAA;EACA,0BAAA;AAER;AADQ;EACI,uBAAA;EACA,qBAAA;AAGZ","sourcesContent":[".NavBar {\n    background-color: white;\n    display: grid;\n    width: 100vw;\n    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;\n    overflow: hidden;\n    position: fixed;\n    top: 0;\n    button {\n        border: none;\n        background-color: transparent;\n        font-size: 3vmin;\n        color: black;\n        font-family: 'Roboto Mono';\n        &:link, &:visited {\n            color: rgb(25, 97, 252);\n            text-decoration: none;\n        }\n    }\n}"],"sourceRoot":""}]);
+}
+._80BzjHmA6SFgaAg17ZUv button:hover {
+  text-decoration: none;
+  font-size: 3.5vmin;
+}
+._80BzjHmA6SFgaAg17ZUv a {
+  color: black;
+  font-size: 3vmin;
+}
+._80BzjHmA6SFgaAg17ZUv a:hover {
+  font-size: 3.5vmin;
+  text-decoration: none;
+}`, "",{"version":3,"sources":["webpack://./src/components/Nav/Nav.module.scss"],"names":[],"mappings":"AAAA;EACI,uBAAA;EACA,aAAA;EACA,YAAA;EACA,8CAAA;EACA,gBAAA;EACA,eAAA;EACA,MAAA;EACA,OAAA;AACJ;AAAI;EACI,YAAA;EACA,6BAAA;EACA,gBAAA;EACA,YAAA;EACA,0BAAA;EACA,gBAAA;AAER;AADQ;EACI,uBAAA;EACA,qBAAA;AAGZ;AAAI;EACI,qBAAA;EACA,kBAAA;AAER;AAAI;EACI,YAAA;EACA,gBAAA;AAER;AACI;EACI,kBAAA;EACA,qBAAA;AACR","sourcesContent":[".NavBar {\n    background-color: white;\n    display: grid;\n    width: 100vw;\n    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;\n    overflow: hidden;\n    position: fixed;\n    top: 0;\n    left: 0;\n    button {\n        border: none;\n        background-color: transparent;\n        font-size: 3vmin;\n        color: black;\n        font-family: 'Roboto Mono';\n        font-size: 3vmin;\n        &:link, &:visited {\n            color: rgb(25, 97, 252);\n            text-decoration: none;\n        }\n    }\n    button:hover{ \n        text-decoration: none;\n        font-size: 3.5vmin;\n    }\n    a {\n        color: black;\n        font-size: 3vmin;\n\n    }\n    a:hover{\n        font-size: 3.5vmin;\n        text-decoration: none;\n\n    }\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"NavBar": `_80BzjHmA6SFgaAg17ZUv`
@@ -2550,12 +2607,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.RZqTJBeYN7RXwcHgPFys {
   justify-content: space-between;
   align-items: center;
   margin: 3vmin 2vmin;
-}
-
-.RZqTJBeYN7RXwcHgPFys {
-  max-height: -moz-fit-content;
-  max-height: fit-content;
-}`, "",{"version":3,"sources":["webpack://./src/pages/NewOrderPage/NewOrderPage.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,aAAA;EACA,sCAAA;EACA,uBAAA;EACA,8BAAA;EACA,oBAAA;AACJ;;AAEA;EACI,aAAA;EACA,sBAAA;EACA,8BAAA;EACA,mBAAA;EACA,mBAAA;AACJ;;AACA;EACI,4BAAA;EACA,uBAAA;AAEJ","sourcesContent":[".NewOrderPage {\n    height: 100%;\n    display: grid;\n    grid-template-columns: 1.6fr 3.5fr 3fr;\n    grid-template-rows: 1fr;\n    background-color: var(--white);\n    border-radius: 2vmin;\n}\n\n.NewOrderPage aside {\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n    align-items: center;\n    margin: 3vmin 2vmin;\n}  \n.NewOrderPage {\n    max-height: -moz-fit-content;\n    max-height: fit-content;\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/pages/NewOrderPage/NewOrderPage.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,aAAA;EACA,sCAAA;EACA,uBAAA;EACA,8BAAA;EACA,oBAAA;AACJ;;AAEA;EACI,aAAA;EACA,sBAAA;EACA,8BAAA;EACA,mBAAA;EACA,mBAAA;AACJ","sourcesContent":[".NewOrderPage {\n    height: 100%;\n    display: grid;\n    grid-template-columns: 1.6fr 3.5fr 3fr;\n    grid-template-rows: 1fr;\n    background-color: var(--white);\n    border-radius: 2vmin;\n}\n\n.NewOrderPage aside {\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n    align-items: center;\n    margin: 3vmin 2vmin;\n}  "],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"NewOrderPage": `RZqTJBeYN7RXwcHgPFys`
@@ -3964,9 +4016,47 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/harmony module decorator */
+/******/ 	(() => {
+/******/ 		__webpack_require__.hmd = (module) => {
+/******/ 			module = Object.create(module);
+/******/ 			if (!module.children) module.children = [];
+/******/ 			Object.defineProperty(module, 'exports', {
+/******/ 				enumerable: true,
+/******/ 				set: () => {
+/******/ 					throw new Error('ES Modules may not assign module.exports or exports.*, Use ESM export syntax, instead: ' + module.id);
+/******/ 				}
+/******/ 			});
+/******/ 			return module;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/make namespace object */
+/******/ 	(() => {
+/******/ 		// define __esModule on exports
+/******/ 		__webpack_require__.r = (exports) => {
+/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 			}
+/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 		};
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/node module decorator */
@@ -4041,9 +4131,9 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendors-node_modules_css-loader_dist_runtime_api_js-node_modules_css-loader_dist_runtime_sour-b42dfe"], () => (__webpack_require__("./src/index.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendors-node_modules_css-loader_dist_runtime_api_js-node_modules_css-loader_dist_runtime_sour-6176ba"], () => (__webpack_require__("./src/index.js")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.7d169c2a0d7acee1a3912541d6953c48.js.map
+//# sourceMappingURL=App.f6d6bac8eb00ad02dcbfa8f5f8ca9e7a.js.map
