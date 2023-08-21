@@ -12,6 +12,6 @@ router.post('/cart/items/:id', ordersCtrl.addToCart)
 // POST
 router.post('/cart/checkout', ordersCtrl.checkout)
 // POST
-router.post('/cart/qty', ordersCtrl.setItemQtyInCart)
+router.put('/cart/qty', ordersCtrl.setItemQtyInCart)
 
 module.exports = router

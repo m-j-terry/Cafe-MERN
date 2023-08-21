@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react' 
 import * as itemsAPI from '../../utilities/items-api' 
-import * as ordersAPI from '../../utilities/order-api' 
+import * as ordersAPI from '../../utilities/orders-api' 
 import styles from './NewOrderPage.module.scss' 
 import { Link, useNavigate } from 'react-router-dom' 
 import MenuList from '../../components/MenuList/MenuList' 
@@ -30,11 +30,12 @@ export default function NewOrderPage({ user, setUser, orderItem }) {
         async function getCart() {
         const cart = await ordersAPI.getCart() 
         setCart(cart) 
+        const item = await ordersAPI.getById(orderItem)
+            if (item) {
+            handleAddToOrder(orderItem)
+            }
         }
         getCart() 
-        console.log(orderItem)
-        handleAddToOrder(orderItem)
-        console.log('cart = ' + cart)
     }, []) 
 
     /*--- event handlers ---*/
@@ -44,6 +45,7 @@ export default function NewOrderPage({ user, setUser, orderItem }) {
     }
 
     async function handleChangeQty(itemId, newQty) {
+        console.log(newQty)
         const updatedCart = await ordersAPI.setItemQtyInCart(itemId, newQty)
         setCart(updatedCart)
     }

@@ -2,8 +2,8 @@ import sendRequest from './send-request'
 
 const BASE_URL = '/api/orders'
 
-export function getCart() {
-    return sendRequest(`${BASE_URL}/cart`)
+export async function getCart() {
+    return await sendRequest(`${BASE_URL}/cart`)
 }
 
 export function addItemToCart(itemId) {
@@ -15,7 +15,6 @@ export function setItemQtyInCart(itemId, newQty) {
 }
 
 export function checkout() {
-    if (!user) return (<AuthPage />)
     return sendRequest(`${BASE_URL}/cart/checkout`, 'POST')
 }
 
