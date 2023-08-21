@@ -8,7 +8,7 @@ import CategoryList from '../../components/CategoryList/CategoryList'
 import OrderDetail from '../../components/OrderDetail/OrderDetail' 
 import UserLogOut from '../../components/UserLogOut/UserLogOut' 
 
-export default function NewOrderPage({ user, setUser, orderItem }) {
+export default function NewOrderPage({ user, setUser, orderItem, setCheckout }) {
     const [menuItems, setMenuItems] = useState([]) 
     const [activeCat, setActiveCat] = useState('') 
     const [cart, setCart] = useState(null) 
@@ -30,12 +30,14 @@ export default function NewOrderPage({ user, setUser, orderItem }) {
         async function getCart() {
         const cart = await ordersAPI.getCart() 
         setCart(cart) 
-        const item = await ordersAPI.getById(orderItem)
-            if (item) {
-            handleAddToOrder(orderItem)
-            }
         }
         getCart() 
+        async function checkItem(){
+            const item = await itemsAPI.getById(orderItem)
+            item ? handleAddToOrder(orderItem) : console.log('not an item')
+
+        }
+        checkItem()
     }, []) 
 
     /*--- event handlers ---*/
@@ -52,7 +54,7 @@ export default function NewOrderPage({ user, setUser, orderItem }) {
 
     async function handleCheckout() {
         await ordersAPI.checkout() 
-        navigate('/orders') 
+        setCheckout(true)
     }
 
     return (

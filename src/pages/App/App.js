@@ -12,6 +12,7 @@ export default function App() {
     const [user, setUser] = useState(getUser())
     const [order, setOrder] = useState([])
     const [orderItem, setOrderItem] = useState([])
+    const [checkout, setCheckout] = useState(false)
     useEffect(function() {
         localStorage.clear()
     }, [])
@@ -26,10 +27,16 @@ export default function App() {
                     setOrderItem={setOrderItem}
                 />
                 : 
-                user ? 
-                    <NewOrderPage orderItem={orderItem} />
-                    :
-                    <AuthPage setUser={setUser} />
+                user ?
+                    (checkout === false ?
+                        <NewOrderPage 
+                            orderItem={orderItem}
+                            setCheckout={setCheckout}
+                        />
+                        :
+                        <OrderHistoryPage />)       
+                        :
+                        <AuthPage setUser={setUser} />
             }
         </main>
     )

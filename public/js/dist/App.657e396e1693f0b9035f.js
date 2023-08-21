@@ -1162,15 +1162,17 @@ function App() {
   const [user, setUser] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((0,_utilities_users_service__WEBPACK_IMPORTED_MODULE_7__.getUser)());
   const [order, setOrder] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [orderItem, setOrderItem] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  const [checkout, setCheckout] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     localStorage.clear();
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("main", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Nav_Nav__WEBPACK_IMPORTED_MODULE_5__["default"], null)), orderItem.length === 0 ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Home_Home__WEBPACK_IMPORTED_MODULE_6__["default"], {
     orderItem: orderItem,
     setOrderItem: setOrderItem
-  }) : user ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NewOrderPage_NewOrderPage__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    orderItem: orderItem
-  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AuthPage_AuthPage__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }) : user ? checkout === false ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_NewOrderPage_NewOrderPage__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    orderItem: orderItem,
+    setCheckout: setCheckout
+  }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_OrderHistoryPage_OrderHistoryPage__WEBPACK_IMPORTED_MODULE_4__["default"], null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_AuthPage_AuthPage__WEBPACK_IMPORTED_MODULE_2__["default"], {
     setUser: setUser
   }));
 }
@@ -1324,7 +1326,8 @@ function NewOrderPage(_ref) {
   let {
     user,
     setUser,
-    orderItem
+    orderItem,
+    setCheckout
   } = _ref;
   const [menuItems, setMenuItems] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
   const [activeCat, setActiveCat] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)('');
@@ -1346,12 +1349,13 @@ function NewOrderPage(_ref) {
     async function getCart() {
       const cart = await _utilities_orders_api__WEBPACK_IMPORTED_MODULE_8__.getCart();
       setCart(cart);
-      const item = await _utilities_orders_api__WEBPACK_IMPORTED_MODULE_8__.getById(orderItem);
-      if (item) {
-        handleAddToOrder(orderItem);
-      }
     }
     getCart();
+    async function checkItem() {
+      const item = await _utilities_items_api__WEBPACK_IMPORTED_MODULE_7__.getById(orderItem);
+      item ? handleAddToOrder(orderItem) : console.log('not an item');
+    }
+    checkItem();
   }, []);
 
   /*--- event handlers ---*/
@@ -1366,7 +1370,7 @@ function NewOrderPage(_ref) {
   }
   async function handleCheckout() {
     await _utilities_orders_api__WEBPACK_IMPORTED_MODULE_8__.checkout();
-    navigate('/orders');
+    setCheckout(true);
   }
   return /*#__PURE__*/React.createElement("main", {
     className: _NewOrderPage_module_scss__WEBPACK_IMPORTED_MODULE_1__["default"].NewOrderPage
@@ -1403,7 +1407,9 @@ function NewOrderPage(_ref) {
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-/* unused harmony export default */
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ OrderHistoryPage)
+/* harmony export */ });
 /* harmony import */ var _OrderHistoryPage_module_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OrderHistoryPage.module.scss */ "./src/pages/OrderHistoryPage/OrderHistoryPage.module.scss");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
@@ -1477,9 +1483,9 @@ function OrderHistoryPage(_ref) {
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   getAll: () => (/* binding */ getAll),
+/* harmony export */   getById: () => (/* binding */ getById),
 /* harmony export */   getByName: () => (/* binding */ getByName)
 /* harmony export */ });
-/* unused harmony export getById */
 /* harmony import */ var _send_request__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./send-request */ "./src/utilities/send-request.js");
 
 const BASE_URL = '/api/items';
@@ -2544,7 +2550,12 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.RZqTJBeYN7RXwcHgPFys {
   justify-content: space-between;
   align-items: center;
   margin: 3vmin 2vmin;
-}`, "",{"version":3,"sources":["webpack://./src/pages/NewOrderPage/NewOrderPage.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,aAAA;EACA,sCAAA;EACA,uBAAA;EACA,8BAAA;EACA,oBAAA;AACJ;;AAEA;EACI,aAAA;EACA,sBAAA;EACA,8BAAA;EACA,mBAAA;EACA,mBAAA;AACJ","sourcesContent":[".NewOrderPage {\n    height: 100%;\n    display: grid;\n    grid-template-columns: 1.6fr 3.5fr 3fr;\n    grid-template-rows: 1fr;\n    background-color: var(--white);\n    border-radius: 2vmin;\n}\n\n.NewOrderPage aside {\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n    align-items: center;\n    margin: 3vmin 2vmin;\n}  "],"sourceRoot":""}]);
+}
+
+.RZqTJBeYN7RXwcHgPFys {
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+}`, "",{"version":3,"sources":["webpack://./src/pages/NewOrderPage/NewOrderPage.module.scss"],"names":[],"mappings":"AAAA;EACI,YAAA;EACA,aAAA;EACA,sCAAA;EACA,uBAAA;EACA,8BAAA;EACA,oBAAA;AACJ;;AAEA;EACI,aAAA;EACA,sBAAA;EACA,8BAAA;EACA,mBAAA;EACA,mBAAA;AACJ;;AACA;EACI,4BAAA;EACA,uBAAA;AAEJ","sourcesContent":[".NewOrderPage {\n    height: 100%;\n    display: grid;\n    grid-template-columns: 1.6fr 3.5fr 3fr;\n    grid-template-rows: 1fr;\n    background-color: var(--white);\n    border-radius: 2vmin;\n}\n\n.NewOrderPage aside {\n    display: flex;\n    flex-direction: column;\n    justify-content: space-between;\n    align-items: center;\n    margin: 3vmin 2vmin;\n}  \n.NewOrderPage {\n    max-height: -moz-fit-content;\n    max-height: fit-content;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"NewOrderPage": `RZqTJBeYN7RXwcHgPFys`
@@ -4035,4 +4046,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.b4ec03a9bb0a1fc0bd7becd5ece5cb63.js.map
+//# sourceMappingURL=App.7d169c2a0d7acee1a3912541d6953c48.js.map
