@@ -5,8 +5,9 @@ import Map from './Map'
 export default function FindUs() {
 
     return(
-        <div className={styles.FindUs}>
-            <h1 className='title' id='findUs'>find us</h1>
+        <div className={styles.FindUs}id='findUs'>
+            <div className={styles.buffer}></div>
+            <h1 className='title'>find us</h1>
             <div>
                 <Map />
             </div>

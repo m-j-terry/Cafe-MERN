@@ -22,7 +22,8 @@ export default function Home({
             <div className='FindUs' id='FindUs'>
                 <FindUs />
             </div>
-            <div className='ContactUs' id='ContactUs'>
+            <div className='ContactUs' id='ContactUs'></div>
+            <div>
                 <ContactUs />
             </div>
         </div>

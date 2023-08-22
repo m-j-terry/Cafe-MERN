@@ -81,10 +81,12 @@ module.exports = {
 
 function About() {
   return /*#__PURE__*/React.createElement("div", {
-    className: _About_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].About
-  }, /*#__PURE__*/React.createElement("h1", {
-    className: "title",
+    className: _About_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].About,
     id: "about"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: _About_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].buffer
+  }), /*#__PURE__*/React.createElement("h1", {
+    className: "title"
   }, "about"), /*#__PURE__*/React.createElement("div", {
     className: _About_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].AboutFlex
   }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("img", {
@@ -189,10 +191,12 @@ function ContactUs() {
 
 function FindUs() {
   return /*#__PURE__*/React.createElement("div", {
-    className: _FindUs_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].FindUs
-  }, /*#__PURE__*/React.createElement("h1", {
-    className: "title",
+    className: _FindUs_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].FindUs,
     id: "findUs"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: _FindUs_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].buffer
+  }), /*#__PURE__*/React.createElement("h1", {
+    className: "title"
   }, "find us"), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_Map__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/React.createElement("h2", {
     className: "title"
   }, "location and hours"), /*#__PURE__*/React.createElement("div", {
@@ -287,9 +291,10 @@ function Map() {
 
 function Hamlet() {
   return /*#__PURE__*/React.createElement("div", {
-    className: _Hamlet_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].hamlet
-  }, /*#__PURE__*/React.createElement("a", {
+    className: _Hamlet_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].hamlet,
     id: "home"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: _Hamlet_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].buffer
   }), /*#__PURE__*/React.createElement("h1", {
     className: "title"
   }, "hamlet"), /*#__PURE__*/React.createElement("img", {
@@ -1329,7 +1334,7 @@ function Home(_ref) {
   }, /*#__PURE__*/React.createElement(_components_FindUs_FindUs__WEBPACK_IMPORTED_MODULE_3__["default"], null)), /*#__PURE__*/React.createElement("div", {
     className: "ContactUs",
     id: "ContactUs"
-  }, /*#__PURE__*/React.createElement(_components_ContactUs_ContactUs__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
+  }), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement(_components_ContactUs_ContactUs__WEBPACK_IMPORTED_MODULE_4__["default"], null)));
 }
 
 /***/ }),
@@ -1737,14 +1742,19 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.jNSWZVvXw3pZSAmHDvkZ {
   font-size: 25px;
   text-align: justify;
   text-justify: inter-word;
-}`, "",{"version":3,"sources":["webpack://./src/components/About/About.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAA;EACA,qBAAA;AACJ;AAAI;EACI,aAAA;EACA,8BAAA;AAER;AAAI;EACI,mBAAA;EACA,cAAA;EACA,aAAA;AAER;AAAI;EACI,YAAA;EACA,qBAAA;AAER;AAAI;EACI,0BAAA;EACA,gBAAA;EACA,oBAAA;EACA,eAAA;EACA,mBAAA;EACA,wBAAA;AAER","sourcesContent":[".About{\n    margin-top: 25vmin;\n    margin-bottom: 25vmin;\n    .AboutFlex{\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n    }\n    .matcha{\n        margin-left: 20vmin;\n        height: 75vmin;\n        width: 55vmin;\n    }\n    .right{\n        margin: auto;\n        align-content: center;\n    }\n    .aboutparagraph{\n        font-family: 'Roboto Mono';\n        text-align: left;\n        margin-bottom: 5vmin;\n        font-size: 25px;\n        text-align: justify;\n        text-justify: inter-word;\n    }\n}"],"sourceRoot":""}]);
+}
+.jNSWZVvXw3pZSAmHDvkZ .KTwBtjuwVJm_5l_uIahr {
+  min-height: 70px;
+  min-width: 100%;
+}`, "",{"version":3,"sources":["webpack://./src/components/About/About.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAA;EACA,qBAAA;AACJ;AAAI;EACI,aAAA;EACA,8BAAA;AAER;AAAI;EACI,mBAAA;EACA,cAAA;EACA,aAAA;AAER;AAAI;EACI,YAAA;EACA,qBAAA;AAER;AAAI;EACI,0BAAA;EACA,gBAAA;EACA,oBAAA;EACA,eAAA;EACA,mBAAA;EACA,wBAAA;AAER;AAAI;EACI,gBAAA;EACA,eAAA;AAER","sourcesContent":[".About{\n    margin-top: 25vmin;\n    margin-bottom: 25vmin;\n    .AboutFlex{\n        display: grid;\n        grid-template-columns: 1fr 1fr;\n    }\n    .matcha{\n        margin-left: 20vmin;\n        height: 75vmin;\n        width: 55vmin;\n    }\n    .right{\n        margin: auto;\n        align-content: center;\n    }\n    .aboutparagraph{\n        font-family: 'Roboto Mono';\n        text-align: left;\n        margin-bottom: 5vmin;\n        font-size: 25px;\n        text-align: justify;\n        text-justify: inter-word;\n    }\n    .buffer{\n        min-height:70px;\n        min-width:100%;\n    }\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"About": `jNSWZVvXw3pZSAmHDvkZ`,
 	"AboutFlex": `b2ZuPzr81RGDHzQFR9A0`,
 	"matcha": `xC7DtFSni0cOvFh08HoZ`,
 	"right": `qXTRqhHlksAYojKKv0pV`,
-	"aboutparagraph": `NgjjiZQKxIEHLLk_ecgy`
+	"aboutparagraph": `NgjjiZQKxIEHLLk_ecgy`,
+	"buffer": `KTwBtjuwVJm_5l_uIahr`
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1882,6 +1892,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.o1RAIYRTjCGjM0JNiKDA {
 .o1RAIYRTjCGjM0JNiKDA .vRt8EhvrZ4lvymEi160n {
   font-family: "Roboto Mono";
 }
+.o1RAIYRTjCGjM0JNiKDA .VfaSPJG71p72QQoRx1_j {
+  min-height: 70px;
+  min-width: 100%;
+}
 
 .eXMUrk6KMwqbSKmAIjzt {
   height: 100%;
@@ -1890,13 +1904,14 @@ ___CSS_LOADER_EXPORT___.push([module.id, `.o1RAIYRTjCGjM0JNiKDA {
 
 .RP80zUjapx91JZfP3Gag {
   height: 40vmin;
-}`, "",{"version":3,"sources":["webpack://./src/components/FindUs/FindUs.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAA;AACJ;AAAI;EACI,aAAA;EACA,iCAAA;EACA,mBAAA;AAER;AAAI;EACI,mBAAA;AAER;AACI;EACI,0BAAA;AACR;;AAGA;EACI,YAAA;EACA,WAAA;AAAJ;;AAGA;EACI,cAAA;AAAJ","sourcesContent":[".FindUs{\n    margin-top: 25vmin;\n    .flexbox{\n        display: grid;\n        grid-template-columns: 59% 1% 20%;\n        align-items: center;\n    }\n    .left{ \n        align-items: center;\n    }\n\n    .par{\n        font-family: 'Roboto Mono';\n    }\n}\n\n.mapContainer{\n    height:100%;\n    width:100%\n}\n\n.Map{\n    height: 40vmin;\n}"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/components/FindUs/FindUs.module.scss"],"names":[],"mappings":"AAAA;EACI,kBAAA;AACJ;AAAI;EACI,aAAA;EACA,iCAAA;EACA,mBAAA;AAER;AAAI;EACI,mBAAA;AAER;AACI;EACI,0BAAA;AACR;AACI;EACI,gBAAA;EACA,eAAA;AACR;;AAGA;EACI,YAAA;EACA,WAAA;AAAJ;;AAGA;EACI,cAAA;AAAJ","sourcesContent":[".FindUs{\n    margin-top: 25vmin;\n    .flexbox{\n        display: grid;\n        grid-template-columns: 59% 1% 20%;\n        align-items: center;\n    }\n    .left{ \n        align-items: center;\n    }\n\n    .par{\n        font-family: 'Roboto Mono';\n    }\n    .buffer{\n        min-height:70px;\n        min-width:100%;\n    }\n}\n\n.mapContainer{\n    height:100%;\n    width:100%\n}\n\n.Map{\n    height: 40vmin;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"FindUs": `o1RAIYRTjCGjM0JNiKDA`,
 	"flexbox": `tIQvFZW_ypcXtIA3KdhP`,
 	"left": `ug8cT6SYuaqe_us73mxg`,
 	"par": `vRt8EhvrZ4lvymEi160n`,
+	"buffer": `VfaSPJG71p72QQoRx1_j`,
 	"mapContainer": `eXMUrk6KMwqbSKmAIjzt`,
 	"Map": `RP80zUjapx91JZfP3Gag`
 };
@@ -1938,12 +1953,18 @@ a#UfolLx6O9fYrckNw33OV {
   display: block;
   position: relative;
   top: -250px;
-}`, "",{"version":3,"sources":["webpack://./src/components/Hamlet/Hamlet.module.scss"],"names":[],"mappings":"AAAA;EACI,eAAA;AACJ;;AACA;EACI,cAAA;EACA,iBAAA;EACA,kBAAA;AAEJ;;AACA;EACI,cAAA;EACA,kBAAA;EACA,WAAA;AAEJ","sourcesContent":[".hamlet{ \n    padding: 20vmin;\n}\n.hamletImg{\n    display: block;\n    margin-left: auto;\n    margin-right: auto;\n}\n\na#home {\n    display:block;\n    position:relative;\n    top:-250px;\n}"],"sourceRoot":""}]);
+}
+
+.otrR899iLkk_WLr26idq {
+  min-height: 70px;
+  min-width: 100%;
+}`, "",{"version":3,"sources":["webpack://./src/components/Hamlet/Hamlet.module.scss"],"names":[],"mappings":"AAAA;EACI,eAAA;AACJ;;AACA;EACI,cAAA;EACA,iBAAA;EACA,kBAAA;AAEJ;;AACA;EACI,cAAA;EACA,kBAAA;EACA,WAAA;AAEJ;;AAAA;EACI,gBAAA;EACA,eAAA;AAGJ","sourcesContent":[".hamlet{ \n    padding: 20vmin;\n}\n.hamletImg{\n    display: block;\n    margin-left: auto;\n    margin-right: auto;\n}\n\na#home {\n    display:block;\n    position:relative;\n    top:-250px;\n}\n.buffer{\n    min-height:70px;\n    min-width:100%;\n}"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
 	"hamlet": `hFVQ3IWpeLmlSsXn_nO4`,
 	"hamletImg": `twhxPktVWvJXzlhqqukS`,
-	"home": `UfolLx6O9fYrckNw33OV`
+	"home": `UfolLx6O9fYrckNw33OV`,
+	"buffer": `otrR899iLkk_WLr26idq`
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -4142,4 +4163,4 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.a776271fd4248912c1eaa0f5ee43d9a6.js.map
+//# sourceMappingURL=App.0c965f5cf0b7b2ae3af1486189b7b100.js.map
