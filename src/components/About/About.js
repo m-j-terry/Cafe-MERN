@@ -15,7 +15,7 @@ export default function About() {
                     <p></p>
                     <p className={styles.aboutparagraph}>at hamlet, we are committed to sustainable aggriculture and a more humane economy, sourcing our milks from family-owned NY state farms, our pastries from locally-owned bakery Runner and Stone, and our beans from fair-trade-certified coffee farms around the world.</p>
                     <p></p>
-                    <p className={styles.aboutparagraph}></p>
+                    <p className={styles.aboutparagraph}>because the highest quality coffee happens to be the most ecologically responsible and ethically sourced.</p>
                 </div>
             </div>
         </div>

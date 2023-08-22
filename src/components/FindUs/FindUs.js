@@ -1,14 +1,14 @@
 import styles from './FindUs.module.scss'
+
 import Map from './Map'
 
 export default function FindUs() {
-
 
     return(
         <div className={styles.FindUs}>
             <h1 className='title' id='findUs'>find us</h1>
             <div>
-                {/* <Map /> */}
+                <Map />
             </div>
             <h2 className='title'>location and hours</h2>
             <div className={styles.flexbox}>

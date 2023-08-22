@@ -15,6 +15,17 @@
         grid-template-rows: 75px 75px 75px 75px 75px;
         grid-template-columns: 150px 150px; 
     }
+    .right3 {
+        display: grid;
+        grid-template-rows: 75px;
+        grid-template-columns: 150px 150px;
+        margin-left: 40vmin; 
+    }
+    .left3 {
+        display: grid;
+        grid-template-rows: 75px;
+        grid-template-columns: 150px 150px; 
+    }
     .right2 { 
         display: grid;
         grid-template-rows: 75px 75px;
@@ -33,9 +44,6 @@
     .item {
         font-family: 'Roboto Mono'
     }
-    #byTheBag{
-        margin-top: -15vmin;
-    }
     .origin {
         font-family: 'Roboto Mono';
         font-size: 12px;
@@ -43,16 +51,30 @@
     button:hover {
         cursor: pointer;
     }
-    button .order {
+    .order {
         border: black;
-        background-color: white;
+        background-color:lightgray;
         color: black;
         font-size: 2vmin;
-        height: 25px;
+        align-self: center;
+        height: 55px;
         width: 135px;
         column-gap: 10px;
-        border-radius: 3%;
+        border-radius: 5%;
         margin-top: 10px;
         font-family: 'Roboto Mono';
     }  
+    #btn1, #btn2 {
+        border: black;
+        background-color:lightgray;
+        color: black;
+        font-size: 2vmin;
+        align-self: center;
+        height: 55px;
+        width: 135px;
+        column-gap: 10px;
+        border-radius: 5%;
+        margin-top: 10px;
+        font-family: 'Roboto Mono';
+    }
 }

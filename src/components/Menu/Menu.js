@@ -65,12 +65,12 @@ export default function menu({ setOrderItem }) {
             </div> 
             <h2 className={styles.item}>food</h2>
             <div className={styles.menuFull}>
-                <div className={styles.right}>
+                <div className={styles.right3}>
                     <p className={styles.item}>English Muffin</p>
                     <button className={styles.order} onClick={() => startOrder('English-Muffin')}>Add to order</button>
                 </div>
                 <div className='this is an empty div for spacing'>       </div>
-                    <div className={styles.left}>
+                    <div className={styles.left3}>
                         <p className={styles.item}>Lemon-Raspberry Scone</p>
                         <button className={styles.order} onClick={() => startOrder('Lemon-Raspberry-Scone')}>Add to order</button>
                     </div>
@@ -81,18 +81,17 @@ export default function menu({ setOrderItem }) {
                     <p></p>
                     <p className={styles.item}>Little Wolf</p>
                     <p className={styles.origin}>Laayyoo, Ethopia</p>
-                    <button className={styles.order} onClick={() => startOrder('Little-Wolf')}>Add to Order</button>
+                    <button className={styles.order} id={styles.btn1} onClick={() => startOrder('Little-Wolf')}>Add to Order</button>
                     <p className={styles.origin}>notes:</p>
                     <p className={styles.origin}>peach,</p>
                     <p className={styles.origin}>lychee,</p>
                     <p className={styles.origin}>floral</p>
                 </div>
-                <div className='this is an empty div for spacing'>       </div>
                     <div className={styles.left2}>
                         <p></p>
                         <p className={styles.item}>Coptic Light</p>
                         <p className={styles.origin}>Las Palmas, El Salvador</p>
-                        <button className={styles.order} onClick={() => startOrder('Coptic-Light')}>Add to Order</button>
+                        <button className={styles.order} id={styles.btn2} onClick={() => startOrder('Coptic-Light')}>Add to Order</button>
                         <p className={styles.origin}>notes:</p>
                         <p className={styles.origin}> milk chocolate,</p>
                         <p className={styles.origin}>candied pecan,</p>
